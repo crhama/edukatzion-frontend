@@ -76,5 +76,21 @@ export const appRoutes: Route[] = [
         children   : [
             {path: 'example', loadChildren: () => import('app/modules/admin/example/example.module').then(m => m.ExampleModule)},
         ]
+    },
+
+    //Students
+    {
+        path: 'students', 
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            {
+                path: 'management', 
+                loadChildren: () => import('app/modules/students/student-management/student-management.module')
+                    .then(m => m.StudentManagementModule)
+            },
+        ]
     }
 ];

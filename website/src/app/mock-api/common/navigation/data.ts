@@ -14,7 +14,7 @@ export const defaultNavigation: FuseNavigationItem[] = [
                 title: 'List',
                 type : 'basic',
                 icon : 'heroicons_outline:clipboard-check',
-                link : '/students/list'
+                link : '/students/management/list'
             }
         ]
     },
