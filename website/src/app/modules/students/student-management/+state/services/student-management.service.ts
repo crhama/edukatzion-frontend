@@ -52,7 +52,35 @@ export class StudentManagementService
                 lastName: 'Rhamazany',
                 status: 'completed',
                 lastUpdated: new Date()
-            }
+            },
+            {
+                studentId: '005',
+                firstName: 'Charlie Sr.',
+                lastName: 'Rhamazany',
+                status: 'completed',
+                lastUpdated: new Date()
+            },
+            // {
+            //     studentId: '006',
+            //     firstName: 'Monia',
+            //     lastName: 'Akele-Sita',
+            //     status: 'completed',
+            //     lastUpdated: new Date()
+            // },
+            // {
+            //     studentId: '007',
+            //     firstName: 'Charlie Jr.',
+            //     lastName: 'Rhamazany',
+            //     status: 'completed',
+            //     lastUpdated: new Date()
+            // },
+            // {
+            //     studentId: '008',
+            //     firstName: 'Malaika',
+            //     lastName: 'Rhamazany',
+            //     status: 'completed',
+            //     lastUpdated: new Date()
+            // }
         ];
         return of(data);
     }

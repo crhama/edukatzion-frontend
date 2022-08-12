@@ -16,6 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import * as fromReducer from '../student-management/+state/reducers/student-management.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { StudentManagementEffects } from './+state/effects/student-management.effects';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -34,6 +35,7 @@ import { StudentManagementEffects } from './+state/effects/student-management.ef
     MatSortModule,
     MatTableModule,
     NgApexchartsModule,
+    MatPaginatorModule,
     SharedModule,
 
     StoreModule.forFeature(
