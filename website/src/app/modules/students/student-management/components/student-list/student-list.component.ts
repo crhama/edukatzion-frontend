@@ -1,9 +1,9 @@
 import { AfterViewInit, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ApexOptions } from 'apexcharts';
 import { Subject, takeUntil } from 'rxjs';
-import { FinanceService } from '../../+state/services/finance.service';
+import { StudentViewModel } from '../../+state/models/student-management.models';
+import { StudentManagementService } from '../../+state/services/student-management.service';
 
 @Component({
   selector: 'app-student-list',
@@ -14,12 +14,13 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('recentTransactionsTable', {read: MatSort}) recentTransactionsTableMatSort: MatSort;
 
   data: any;
-  accountBalanceOptions: ApexOptions;
-  recentTransactionsDataSource: MatTableDataSource<any> = new MatTableDataSource();
-  recentTransactionsTableColumns: string[] = ['transactionId', 'date', 'name', 'amount', 'status'];
+  studentListDataSource: MatTableDataSource<StudentViewModel> 
+    = new MatTableDataSource();
+  studentListTableColumns: string[] = ['studentId', 'firstName', 'lastName', 'status', 'lastUpdated'];
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
-  constructor(private _financeService: FinanceService) { }
+  constructor(
+    private _mgtService: StudentManagementService) { }
 
   /**
      * On init
@@ -27,7 +28,7 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
    ngOnInit(): void
    {
        // Get the data
-       this._financeService.data$
+       this._mgtService.getStudentList$
            .pipe(takeUntil(this._unsubscribeAll))
            .subscribe((data) => {
 
@@ -35,7 +36,7 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
                this.data = data;
 
                // Store the table data
-               this.recentTransactionsDataSource.data = data.recentTransactions;
+               this.studentListDataSource.data = data;
 
                // Prepare the chart data
                //this._prepareChartData();
@@ -48,7 +49,7 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
     ngAfterViewInit(): void
     {
         // Make the data source sortable
-        this.recentTransactionsDataSource.sort = this.recentTransactionsTableMatSort;
+        this.studentListDataSource.sort = this.recentTransactionsTableMatSort;
     }
 
   /**
