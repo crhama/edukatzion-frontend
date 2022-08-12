@@ -12,6 +12,10 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { SharedModule } from 'app/shared/shared.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromReducer from '../student-management/+state/reducers/student-management.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { StudentManagementEffects } from './+state/effects/student-management.effects';
 
 
 
@@ -30,7 +34,13 @@ import { SharedModule } from 'app/shared/shared.module';
     MatSortModule,
     MatTableModule,
     NgApexchartsModule,
-    SharedModule
+    SharedModule,
+
+    StoreModule.forFeature(
+      fromReducer.STUDENT_LIST_KEY,
+      fromReducer.studentListReducer
+    ),
+    EffectsModule.forFeature([StudentManagementEffects])
   ]
 })
 export class StudentManagementModule { }

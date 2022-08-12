@@ -27,13 +27,27 @@ export class StudentManagementService
         const data: StudentViewModel[] = [
             {
                 studentId: '001',
-                firstName: 'Charlie Jr.',
+                firstName: 'Charlie Sr.',
                 lastName: 'Rhamazany',
                 status: 'completed',
                 lastUpdated: new Date()
             },
             {
                 studentId: '002',
+                firstName: 'Monia',
+                lastName: 'Akele-Sita',
+                status: 'completed',
+                lastUpdated: new Date()
+            },
+            {
+                studentId: '003',
+                firstName: 'Charlie Jr.',
+                lastName: 'Rhamazany',
+                status: 'completed',
+                lastUpdated: new Date()
+            },
+            {
+                studentId: '004',
                 firstName: 'Malaika',
                 lastName: 'Rhamazany',
                 status: 'completed',

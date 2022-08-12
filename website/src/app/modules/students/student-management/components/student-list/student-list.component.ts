@@ -3,6 +3,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject, takeUntil } from 'rxjs';
 import { StudentViewModel } from '../../+state/models/student-management.models';
+import { StudentManagementFacade } from '../../+state/services/student-management-facade.service';
 import { StudentManagementService } from '../../+state/services/student-management.service';
 
 @Component({
@@ -20,7 +21,7 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   constructor(
-    private _mgtService: StudentManagementService) { }
+    private _mgtFacade: StudentManagementFacade) { }
 
   /**
      * On init
@@ -28,7 +29,7 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
    ngOnInit(): void
    {
        // Get the data
-       this._mgtService.getStudentList$
+       this._mgtFacade.studentList$
            .pipe(takeUntil(this._unsubscribeAll))
            .subscribe((data) => {
 
@@ -41,6 +42,8 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
                // Prepare the chart data
                //this._prepareChartData();
            });
+
+      this._mgtFacade.requesStudentList();
    }
 
    /**
