@@ -94,7 +94,7 @@
                         </ng-container>
 
                         <!-- Status -->
-                        <ng-container matColumnDef="status">
+                        <ng-container matColumnDef="registrationStatus">
                             <th
                                 mat-header-cell
                                 mat-sort-header
@@ -106,9 +106,9 @@
                                 *matCellDef="let transaction">
                                 <span
                                     class="inline-flex items-center font-bold text-xs px-2.5 py-0.5 rounded-full tracking-wide uppercase"
-                                    [ngClass]="{'bg-red-200 text-red-800 dark:bg-red-600 dark:text-red-50': transaction.status === 'pending',
-                                                'bg-green-200 text-green-800 dark:bg-green-600 dark:text-green-50': transaction.status === 'completed'}">
-                                    <span class="leading-relaxed whitespace-nowrap">{{transaction.status}}</span>
+                                    [ngClass]="{'bg-red-200 text-red-800 dark:bg-red-600 dark:text-red-50': transaction.registrationStatus === 'pending',
+                                                'bg-green-200 text-green-800 dark:bg-green-600 dark:text-green-50': transaction.registrationStatus === 'completed'}">
+                                    <span class="leading-relaxed whitespace-nowrap">{{transaction.registrationStatus}}</span>
                                 </span>
                             </td>
                         </ng-container>

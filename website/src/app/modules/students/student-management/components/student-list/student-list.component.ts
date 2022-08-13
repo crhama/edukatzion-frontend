@@ -20,7 +20,7 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
   data: any;
   studentListDataSource: MatTableDataSource<StudentViewModel> 
     = new MatTableDataSource();
-  studentListTableColumns: string[] = ['studentId', 'firstName', 'lastName', 'status', 'lastUpdated'];
+  studentListTableColumns: string[] = ['studentId', 'firstName', 'lastName', 'registrationStatus', 'lastUpdated'];
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   //TO BE MOVED
