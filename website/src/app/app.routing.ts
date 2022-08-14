@@ -92,5 +92,20 @@ export const appRoutes: Route[] = [
                     .then(m => m.StudentManagementModule)
             },
         ]
+    },
+    //Students
+    {
+        path: 'courses', 
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            {
+                path: 'management', 
+                loadChildren: () => import('app/modules/courses/course-management/course-management.module')
+                    .then(m => m.CourseManagementModule)
+            },
+        ]
     }
 ];

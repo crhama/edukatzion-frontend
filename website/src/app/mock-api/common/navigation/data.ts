@@ -19,6 +19,22 @@ export const defaultNavigation: FuseNavigationItem[] = [
         ]
     },
     {
+        id      : 'courses',
+        title   : 'courses',
+        subtitle: 'Course Management',
+        type    : 'group',
+        icon    : 'heroicons_outline:home',
+        children: [
+            {
+                id   : 'courses.list',
+                title: 'List',
+                type : 'basic',
+                icon : 'heroicons_outline:clipboard-check',
+                link : '/courses/management/list'
+            }
+        ]
+    },
+    {
         id   : 'example',
         title: 'Example',
         type : 'basic',
