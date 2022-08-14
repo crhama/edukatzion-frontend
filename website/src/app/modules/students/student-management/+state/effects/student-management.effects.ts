@@ -12,10 +12,11 @@ export class StudentManagementEffects {
     studentList$ = createEffect(() =>
         this._actions$.pipe(
             ofType(fromActions.requestStudentList),
-            mergeMap(() => this._service
-                .getStudentList$
+            mergeMap((action) => this._service
+                .getStudentList(action.pageIndex, action.pageSize)
                 .pipe(
-                    map((students) => fromActions.saveStudentList({ students }))
+                    map((studentResult) => fromActions
+                        .saveStudentList({ studentResult }))
                 ))
         )
     );

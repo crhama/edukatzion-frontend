@@ -9,3 +9,8 @@ export const selectStudentList = createSelector(
     getStudentManagementFeatureState,
     fromReducer.selectAll
 );
+
+export const selectStudentListPagination = createSelector(
+    getStudentManagementFeatureState,
+    state => state.pagination
+)

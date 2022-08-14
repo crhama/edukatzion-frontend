@@ -6,7 +6,6 @@ import { Subject, takeUntil, tap } from 'rxjs';
 import { PaginationViewModel } from '../../+state/models/shared.models';
 import { StudentViewModel } from '../../+state/models/student-management.models';
 import { StudentManagementFacade } from '../../+state/services/student-management-facade.service';
-import { StudentManagementService } from '../../+state/services/student-management.service';
 
 @Component({
   selector: 'app-student-list',
@@ -24,9 +23,9 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   //TO BE MOVED
-  pagination: PaginationViewModel = {
-    length: 400,
-    size: 10,
+  pagination = {
+    length: 0,
+    size: 0,
     page: 0,
     lastPage: 0,
     startIndex: 0,
@@ -43,18 +42,32 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
    {
        // Get the data
        this._mgtFacade.studentList$
-           .pipe(takeUntil(this._unsubscribeAll))
-           .subscribe((data) => {
+           .pipe(
+            takeUntil(this._unsubscribeAll),
+            tap((data) => {
 
-               // Store the data
-               this.data = data;
+              // Store the data
+              this.data = data;
 
-               // Store the table data
-               this.studentListDataSource.data = data;
+              // Store the table data
+              this.studentListDataSource.data = data;
 
-               // Prepare the chart data
-               //this._prepareChartData();
-           });
+              // Prepare the chart data
+              //this._prepareChartData();
+          })
+          )
+           .subscribe();
+
+        this._mgtFacade.pagination$
+           .pipe(
+            takeUntil(this._unsubscribeAll),
+            tap((pg) => {
+              this.pagination.length = pg.length;
+              this.pagination.size = pg.pageSize;
+              this.pagination.page = pg.pageIndex;
+            })
+           )
+           .subscribe();
 
       this._mgtFacade.requesStudentList();
    }
@@ -70,7 +83,10 @@ export class StudentListComponent implements OnInit, AfterViewInit, OnDestroy {
         this._paginator.page
         .pipe(
           takeUntil(this._unsubscribeAll),
-          tap((p) => console.log(p))
+          tap((p) => {
+            console.log(p);
+            this._mgtFacade.requesStudentList(p.pageIndex, p.pageSize);
+          })
         )
         .subscribe()
       }

@@ -1,9 +1,6 @@
 export interface PaginationViewModel
 {
+    pageIndex: number;
+    pageSize: number;
     length: number;
-    size: number;
-    page: number;
-    lastPage: number;
-    startIndex: number;
-    endIndex: number;
 }
