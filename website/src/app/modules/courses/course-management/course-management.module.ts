@@ -18,6 +18,8 @@ import { SharedModule } from 'app/shared/shared.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CoursDescriptionModalComponent } from './modals/cours-description-modal/cours-description-modal.component';
+import { StoreModule } from '@ngrx/store';
+import * as fromCourseMgt from '../course-management/+state/reducers'
 
 
 
@@ -42,7 +44,9 @@ import { CoursDescriptionModalComponent } from './modals/cours-description-modal
     FuseFindByKeyPipeModule,
     SharedModule,
     MatTabsModule,
-    MatDialogModule
+    MatDialogModule,
+
+    StoreModule.forFeature(fromCourseMgt.COURSE_MGT_KEY, fromCourseMgt.reducers)
   ]
 })
 export class CourseManagementModule { }
