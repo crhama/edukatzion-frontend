@@ -4,7 +4,7 @@ import { MatSelectChange } from '@angular/material/select';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, combineLatest, Subject, takeUntil } from 'rxjs';
-import { Category, Course, CourseViewModel } from '../../+state/models/course-management.model';
+import { Category, Course, CourseCatalogItemViewModel } from '../../+state/models/course-management.model';
 import { CourseManagementFacade } from '../../+state/services/course-management-facade.service';
 import { CoursDescriptionModalComponent } from '../../modals/cours-description-modal/cours-description-modal.component';
 
@@ -16,7 +16,7 @@ import { CoursDescriptionModalComponent } from '../../modals/cours-description-m
 export class ListComponent implements OnInit, OnDestroy {
 
     categories: Category[];
-    courses: CourseViewModel[];
+    courses: CourseCatalogItemViewModel[];
     filteredCourses: Course[];
     filters: {
         categorySlug$: BehaviorSubject<string>;
@@ -63,7 +63,7 @@ export class ListComponent implements OnInit, OnDestroy {
         // Get the courses
         this._courseFacade.courses$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((courses: CourseViewModel[]) => {
+            .subscribe((courses: CourseCatalogItemViewModel[]) => {
                 this.courses = this.filteredCourses = courses;
 
                 // Mark for check
@@ -146,7 +146,7 @@ export class ListComponent implements OnInit, OnDestroy {
         return item.id || index;
     }
 
-    openDescriptionModal(crs: CourseViewModel) {
+    openDescriptionModal(crs: CourseCatalogItemViewModel) {
         const dialogRef = this.dialog.open(
             CoursDescriptionModalComponent, {
                 data: {

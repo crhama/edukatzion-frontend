@@ -1,4 +1,4 @@
-import { Course, CourseViewModel } from "../models/course-management.model";
+import { Course, CourseCatalogItemViewModel } from "../models/course-management.model";
 
 /* eslint-disable */
 export const categories = [
@@ -24,7 +24,7 @@ export const categories = [
     }
 ];
 
-export const courseData: CourseViewModel[] = [
+export const courseData: CourseCatalogItemViewModel[] = [
     {
         id: '095C9433-F6AC-45D2-87BC-141263CC1A67',
         orgCode: 'IS',

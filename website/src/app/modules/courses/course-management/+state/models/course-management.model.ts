@@ -4,7 +4,7 @@ export interface Category {
     slug?: string;
 }
 
-export interface CourseViewModel {
+export interface CourseCatalogItemViewModel {
     id: string;
     orgCode: string;
     crsCode: number;
