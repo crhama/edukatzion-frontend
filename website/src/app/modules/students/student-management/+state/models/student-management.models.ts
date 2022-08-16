@@ -1,4 +1,4 @@
-import { PaginationViewModel } from "./shared.models";
+import { PaginationViewModel } from "app/shared/+state/models/pagination.model";
 
 export interface StudentResultViewModel{
     students: StudentViewModel[];

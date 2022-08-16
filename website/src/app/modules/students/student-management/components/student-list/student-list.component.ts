@@ -3,7 +3,6 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject, takeUntil, tap } from 'rxjs';
-import { PaginationViewModel } from '../../+state/models/shared.models';
 import { StudentViewModel } from '../../+state/models/student-management.models';
 import { StudentManagementFacade } from '../../+state/services/student-management-facade.service';
 

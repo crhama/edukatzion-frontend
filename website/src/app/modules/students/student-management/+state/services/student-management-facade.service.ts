@@ -5,7 +5,7 @@ import * as fromModels from "../models/student-management.models";
 import { StudentListState } from "../reducers/student-management.reducer";
 import * as fromActions from '../actions/student-management.actions';
 import * as fromSelectors from '../selectors/student-management.selectors';
-import * as fromSharedModel from "../models/shared.models";
+import { PaginationViewModel } from "app/shared/+state/models/pagination.model";
 
 @Injectable({
     providedIn: 'root'
@@ -18,7 +18,7 @@ export class StudentManagementFacade {
             .pipe(select(fromSelectors.selectStudentList))
     }
 
-    get pagination$(): Observable<fromSharedModel.PaginationViewModel> 
+    get pagination$(): Observable<PaginationViewModel> 
     {
         return this._store
             .pipe(select(fromSelectors.selectStudentListPagination))

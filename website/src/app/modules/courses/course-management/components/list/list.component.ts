@@ -94,6 +94,8 @@ export class ListComponent implements OnInit, OnDestroy {
                     this.filteredCourses = this.filteredCourses.filter(course => course.progress.completed === 0);
                 }
             });
+
+        this._courseFacade.loadCourseCatalog();
     }
 
     /**

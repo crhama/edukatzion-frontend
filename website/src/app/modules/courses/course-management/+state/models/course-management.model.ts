@@ -1,7 +1,14 @@
+import { PaginationViewModel } from "app/shared/+state/models/pagination.model";
+
 export interface Category {
     id?: string;
     title?: string;
     slug?: string;
+}
+
+export interface CourseCatalogResultViewModel{
+    courseCatalog: CourseCatalogItemViewModel[];
+    pagination: PaginationViewModel;
 }
 
 export interface CourseCatalogItemViewModel {

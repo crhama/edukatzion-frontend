@@ -2,7 +2,7 @@ import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { createReducer, on } from "@ngrx/store";
 import { StudentViewModel } from "../models/student-management.models";
 import * as fromActions from '../actions/student-management.actions';
-import { PaginationViewModel } from "../models/shared.models";
+import { PaginationViewModel } from "app/shared/+state/models/pagination.model";
 
 export const STUDENT_LIST_KEY = 'studentList';
 
