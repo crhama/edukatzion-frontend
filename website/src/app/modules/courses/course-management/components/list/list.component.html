@@ -47,79 +47,28 @@
                             <div class="flex flex-col p-6">
                                 <div class="flex items-center justify-between">
                                     <!-- Course category -->
-                                    <ng-container *ngIf="(course.category | fuseFindByKey:'slug':categories) as category">
-                                        <div
-                                            class="py-0.5 px-3 rounded-full text-sm font-semibold"
-                                            [ngClass]="{'text-blue-800 bg-blue-100 dark:text-blue-50 dark:bg-blue-500': category.slug === 'web',
-                                                        'text-green-800 bg-green-100 dark:text-green-50 dark:bg-green-500': category.slug === 'android',
-                                                        'text-pink-800 bg-pink-100 dark:text-pink-50 dark:bg-pink-500': category.slug === 'cloud',
-                                                        'text-amber-800 bg-amber-100 dark:text-amber-50 dark:bg-amber-500': category.slug === 'firebase'}">
-                                            {{category.title}}
+                                    <ng-container>
+                                        <div class="py-0.5 px-3 rounded-full text-sm font-semibold text-green-800 bg-green-100 dark:text-green-50 dark:bg-green-500">
+                                            {{ course.orgCode + ' ' + course.crsCode }}
                                         </div>
                                     </ng-container>
-                                    <!-- Completed at least once -->
-                                    <div class="flex items-center">
-                                        <ng-container *ngIf="course.progress.completed > 0">
-                                            <mat-icon
-                                                class="icon-size-5 text-green-600"
-                                                [svgIcon]="'heroicons_solid:badge-check'"
-                                                [matTooltip]="'You completed this course at least once'"></mat-icon>
-                                        </ng-container>
-                                    </div>
                                 </div>
                                 <!-- Course title & description -->
                                 <div class="mt-4 text-lg font-medium">{{course.title}}</div>
                                 <div class="mt-0.5 line-clamp-2 text-secondary">{{course.description}}</div>
+                                <div class="px-6 py-4 text-right">
+                                    <button mat-stroked-button (click)="openDescriptionModal(course)">
+                                        <span class="inline-flex items-center">
+                                            <ng-container>
+                                                <span>Description</span>
+                                            </ng-container>
+                                        </span>
+                                    </button>
+                                </div>
                                 <div class="w-12 h-1 my-6 border-t-2"></div>
-                                <!-- Course time -->
-                                <div class="flex items-center leading-5 text-md text-secondary">
-                                    <mat-icon
-                                        class="icon-size-5 text-hint"
-                                        [svgIcon]="'heroicons_solid:clock'"></mat-icon>
-                                    <div class="ml-1.5">{{course.duration}} minutes</div>
-                                </div>
-                                <!-- Course completion -->
-                                <div class="flex items-center mt-2 leading-5 text-md text-secondary">
-                                    <mat-icon
-                                        class="icon-size-5 text-hint"
-                                        [svgIcon]="'heroicons_solid:academic-cap'"></mat-icon>
-                                    <ng-container *ngIf="course.progress.completed === 0">
-                                        <div class="ml-1.5">Never completed</div>
-                                    </ng-container>
-                                    <ng-container *ngIf="course.progress.completed > 0">
-                                        <div class="ml-1.5">
-                                            <span>Completed</span>
-                                            <span class="ml-1">
-                                                <!-- Once -->
-                                                <ng-container *ngIf="course.progress.completed === 1">once</ng-container>
-                                                <!-- Twice -->
-                                                <ng-container *ngIf="course.progress.completed === 2">twice</ng-container>
-                                                <!-- Others -->
-                                                <ng-container *ngIf="course.progress.completed > 2">{{course.progress.completed}}
-                                                    {{course.progress.completed | i18nPlural: {
-                                                        '=0'   : 'time',
-                                                        '=1'   : 'time',
-                                                        'other': 'times'
-                                                    } }}
-                                                </ng-container>
-                                            </span>
-                                        </div>
-                                    </ng-container>
-                                </div>
                             </div>
                             <!-- Footer -->
                             <div class="flex flex-col w-full mt-auto">
-                                <!-- Course progress -->
-                                <div class="relative h-0.5">
-                                    <div
-                                        class="z-10 absolute inset-x-0 h-6 -mt-3"
-                                        [matTooltip]="course.progress.currentStep / course.totalSteps | percent"
-                                        [matTooltipPosition]="'above'"
-                                        [matTooltipClass]="'-mb-0.5'"></div>
-                                    <mat-progress-bar
-                                        class="h-0.5"
-                                        [value]="(100 * course.progress.currentStep) / course.totalSteps"></mat-progress-bar>
-                                </div>
 
                                 <!-- Course launch button -->
                                 <div class="px-6 py-4 text-right bg-gray-50 dark:bg-transparent">
@@ -127,21 +76,8 @@
                                         mat-stroked-button
                                         [routerLink]="[course.id]">
                                         <span class="inline-flex items-center">
-
-                                            <!-- Not started -->
-                                            <ng-container *ngIf="course.progress.currentStep === 0">
-                                                <!-- Never completed -->
-                                                <ng-container *ngIf="course.progress.completed === 0">
-                                                    <span>Start</span>
-                                                </ng-container>
-                                                <!-- Completed before -->
-                                                <ng-container *ngIf="course.progress.completed > 0">
-                                                    <span>Start again</span>
-                                                </ng-container>
-                                            </ng-container>
-
                                             <!-- Started -->
-                                            <ng-container *ngIf="course.progress.currentStep > 0">
+                                            <ng-container>
                                                 <span>Continue</span>
                                             </ng-container>
 

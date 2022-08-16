@@ -16,13 +16,16 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FuseFindByKeyPipeModule } from '@fuse/pipes/find-by-key';
 import { SharedModule } from 'app/shared/shared.module';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CoursDescriptionModalComponent } from './modals/cours-description-modal/cours-description-modal.component';
 
 
 
 @NgModule({
   declarations: [
     CourseManagementComponent,
-    ListComponent
+    ListComponent,
+    CoursDescriptionModalComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +41,8 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatTooltipModule,
     FuseFindByKeyPipeModule,
     SharedModule,
-    MatTabsModule
+    MatTabsModule,
+    MatDialogModule
   ]
 })
 export class CourseManagementModule { }

@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Observable, of } from "rxjs";
-import { Category, Course } from "../models/course-management.model";
+import { Category, Course, CourseViewModel } from "../models/course-management.model";
 import * as fromData from './data';
 
 @Injectable({
@@ -12,8 +12,8 @@ export class CourseManagementFacade {
     return of(values);
   };
 
-  get courses$(): Observable<Course[]>{
-    const values = fromData.courses;
+  get courses$(): Observable<CourseViewModel[]>{
+    const values = fromData.courseData;
     return of(values);
   };
 

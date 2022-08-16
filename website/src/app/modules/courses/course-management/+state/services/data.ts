@@ -1,44 +1,56 @@
-import { Course } from "../models/course-management.model";
+import { Course, CourseViewModel } from "../models/course-management.model";
 
 /* eslint-disable */
 export const categories = [
     {
-        id   : '9a67dff7-3c38-4052-a335-0cef93438ff6',
+        id: '9a67dff7-3c38-4052-a335-0cef93438ff6',
         title: 'Web',
-        slug : 'web'
+        slug: 'web'
     },
     {
-        id   : 'a89672f5-e00d-4be4-9194-cb9d29f82165',
+        id: 'a89672f5-e00d-4be4-9194-cb9d29f82165',
         title: 'Firebase',
-        slug : 'firebase'
+        slug: 'firebase'
     },
     {
-        id   : '02f42092-bb23-4552-9ddb-cfdcc235d48f',
+        id: '02f42092-bb23-4552-9ddb-cfdcc235d48f',
         title: 'Cloud',
-        slug : 'cloud'
+        slug: 'cloud'
     },
     {
-        id   : '5648a630-979f-4403-8c41-fc9790dea8cd',
+        id: '5648a630-979f-4403-8c41-fc9790dea8cd',
         title: 'Android',
-        slug : 'android'
+        slug: 'android'
     }
 ];
+
+export const courseData: CourseViewModel[] = [
+    {
+        id: '095C9433-F6AC-45D2-87BC-141263CC1A67',
+        orgCode: 'IS',
+        crsCode: 600,
+        title: 'Introduction to Object-Oriented Programming Concepts',
+        courseSummary: '',
+        description: 'This course introduces the student of information systems to fundamental object-oriented programming concepts. A student of this course will learn the principles of programming, and in particular object-oriented programming principles. Programming principles and constructs, such as data types, common control flow structures, basic data structures, console input/output, and file input/output will be presented. We will also learn several key object-oriented principles, such as inheritance and exception handling. We will use the Java programming language to learn and implement the basic programming and object-oriented principles described above.'
+    }
+]
+
 export const courses: Course[] = [
     {
-        id         : '694e4e5f-f25f-470b-bd0e-26b1d4f64028',
-        title      : 'Basics of Angular',
-        slug       : 'basics-of-angular',
+        id: '694e4e5f-f25f-470b-bd0e-26b1d4f64028',
+        title: 'Basics of Angular',
+        slug: 'basics-of-angular',
         description: 'Introductory course for Angular and framework basics',
-        category   : 'web',
-        duration   : 30,
-        totalSteps : 11,
-        updatedAt  : 'Jun 28, 2021',
-        featured   : true,
-        progress   : {
+        category: 'web',
+        duration: 30,
+        totalSteps: 11,
+        updatedAt: 'Jun 28, 2021',
+        featured: true,
+        progress: {
             currentStep: 3,
-            completed  : 2
+            completed: 2
         }
-    },
+    },/*
     {
         id         : 'f924007a-2ee9-470b-a316-8d21ed78277f',
         title      : 'Basics of TypeScript',
@@ -293,7 +305,7 @@ export const courses: Course[] = [
             currentStep: 2,
             completed  : 0
         }
-    }
+    }*/
 ];
 export const demoCourseContent = `
 <p class="lead">
@@ -653,69 +665,69 @@ export const demoCourseContent = `
 `;
 export const demoCourseSteps = [
     {
-        order   : 0,
-        title   : 'Introduction',
+        order: 0,
+        title: 'Introduction',
         subtitle: 'Introducing the library and how it works',
-        content : `<h2 class="text-2xl sm:text-3xl">Introduction</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">Introduction</h1> ${demoCourseContent}`
     },
     {
-        order   : 1,
-        title   : 'Get the sample code',
+        order: 1,
+        title: 'Get the sample code',
         subtitle: 'Where to find the sample code and how to access it',
-        content : `<h2 class="text-2xl sm:text-3xl">Get the sample code</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">Get the sample code</h1> ${demoCourseContent}`
     },
     {
-        order   : 2,
-        title   : 'Create a Firebase project and Set up your app',
+        order: 2,
+        title: 'Create a Firebase project and Set up your app',
         subtitle: 'How to create a basic Firebase project and how to run it locally',
-        content : `<h2 class="text-2xl sm:text-3xl">Create a Firebase project and Set up your app</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">Create a Firebase project and Set up your app</h1> ${demoCourseContent}`
     },
     {
-        order   : 3,
-        title   : 'Install the Firebase Command Line Interface',
+        order: 3,
+        title: 'Install the Firebase Command Line Interface',
         subtitle: 'Setting up the Firebase CLI to access command line tools',
-        content : `<h2 class="text-2xl sm:text-3xl">Install the Firebase Command Line Interface</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">Install the Firebase Command Line Interface</h1> ${demoCourseContent}`
     },
     {
-        order   : 4,
-        title   : 'Deploy and run the web app',
+        order: 4,
+        title: 'Deploy and run the web app',
         subtitle: 'How to build, push and run the project remotely',
-        content : `<h2 class="text-2xl sm:text-3xl">Deploy and run the web app</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">Deploy and run the web app</h1> ${demoCourseContent}`
     },
     {
-        order   : 5,
-        title   : 'The Functions Directory',
+        order: 5,
+        title: 'The Functions Directory',
         subtitle: 'Introducing the Functions and Functions Directory',
-        content : `<h2 class="text-2xl sm:text-3xl">The Functions Directory</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">The Functions Directory</h1> ${demoCourseContent}`
     },
     {
-        order   : 6,
-        title   : 'Import the Cloud Functions and Firebase Admin modules',
+        order: 6,
+        title: 'Import the Cloud Functions and Firebase Admin modules',
         subtitle: 'Create your first Function and run it to administer your app',
-        content : `<h2 class="text-2xl sm:text-3xl">Import the Cloud Functions and Firebase Admin modules</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">Import the Cloud Functions and Firebase Admin modules</h1> ${demoCourseContent}`
     },
     {
-        order   : 7,
-        title   : 'Welcome New Users',
+        order: 7,
+        title: 'Welcome New Users',
         subtitle: 'How to create a welcome message for the new users',
-        content : `<h2 class="text-2xl sm:text-3xl">Welcome New Users</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">Welcome New Users</h1> ${demoCourseContent}`
     },
     {
-        order   : 8,
-        title   : 'Images moderation',
+        order: 8,
+        title: 'Images moderation',
         subtitle: 'How to moderate images; crop, resize, optimize',
-        content : `<h2 class="text-2xl sm:text-3xl">Images moderation</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">Images moderation</h1> ${demoCourseContent}`
     },
     {
-        order   : 9,
-        title   : 'New Message Notifications',
+        order: 9,
+        title: 'New Message Notifications',
         subtitle: 'How to create and push a notification to a user',
-        content : `<h2 class="text-2xl sm:text-3xl">New Message Notifications</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">New Message Notifications</h1> ${demoCourseContent}`
     },
     {
-        order   : 10,
-        title   : 'Congratulations!',
+        order: 10,
+        title: 'Congratulations!',
         subtitle: 'Nice work, you have created your first application',
-        content : `<h2 class="text-2xl sm:text-3xl">Congratulations!</h1> ${demoCourseContent}`
+        content: `<h2 class="text-2xl sm:text-3xl">Congratulations!</h1> ${demoCourseContent}`
     }
 ];

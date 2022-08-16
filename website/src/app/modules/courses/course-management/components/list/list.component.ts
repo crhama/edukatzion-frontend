@@ -1,30 +1,32 @@
 import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSelectChange } from '@angular/material/select';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, combineLatest, Subject, takeUntil } from 'rxjs';
-import { Category, Course } from '../../+state/models/course-management.model';
+import { Category, Course, CourseViewModel } from '../../+state/models/course-management.model';
 import { CourseManagementFacade } from '../../+state/services/course-management-facade.service';
+import { CoursDescriptionModalComponent } from '../../modals/cours-description-modal/cours-description-modal.component';
 
 @Component({
-  selector: 'app-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+    selector: 'app-list',
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit, OnDestroy {
 
-  categories: Category[];
-    courses: Course[];
+    categories: Category[];
+    courses: CourseViewModel[];
     filteredCourses: Course[];
     filters: {
         categorySlug$: BehaviorSubject<string>;
         query$: BehaviorSubject<string>;
         hideCompleted$: BehaviorSubject<boolean>;
     } = {
-        categorySlug$ : new BehaviorSubject('all'),
-        query$        : new BehaviorSubject(''),
-        hideCompleted$: new BehaviorSubject(false)
-    };
+            categorySlug$: new BehaviorSubject('all'),
+            query$: new BehaviorSubject(''),
+            hideCompleted$: new BehaviorSubject(false)
+        };
 
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
@@ -35,9 +37,9 @@ export class ListComponent implements OnInit, OnDestroy {
         private _activatedRoute: ActivatedRoute,
         private _changeDetectorRef: ChangeDetectorRef,
         private _router: Router,
-        private _courseFacade: CourseManagementFacade
-    )
-    {
+        private _courseFacade: CourseManagementFacade,
+        public dialog: MatDialog
+    ) {
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -47,8 +49,7 @@ export class ListComponent implements OnInit, OnDestroy {
     /**
      * On init
      */
-    ngOnInit(): void
-    {
+    ngOnInit(): void {
         // Get the categories
         this._courseFacade.categories$
             .pipe(takeUntil(this._unsubscribeAll))
@@ -62,7 +63,7 @@ export class ListComponent implements OnInit, OnDestroy {
         // Get the courses
         this._courseFacade.courses$
             .pipe(takeUntil(this._unsubscribeAll))
-            .subscribe((courses: Course[]) => {
+            .subscribe((courses: CourseViewModel[]) => {
                 this.courses = this.filteredCourses = courses;
 
                 // Mark for check
@@ -77,22 +78,19 @@ export class ListComponent implements OnInit, OnDestroy {
                 this.filteredCourses = this.courses;
 
                 // Filter by category
-                if ( categorySlug !== 'all' )
-                {
+                if (categorySlug !== 'all') {
                     this.filteredCourses = this.filteredCourses.filter(course => course.category === categorySlug);
                 }
 
                 // Filter by search query
-                if ( query !== '' )
-                {
+                if (query !== '') {
                     this.filteredCourses = this.filteredCourses.filter(course => course.title.toLowerCase().includes(query.toLowerCase())
                         || course.description.toLowerCase().includes(query.toLowerCase())
                         || course.category.toLowerCase().includes(query.toLowerCase()));
                 }
 
                 // Filter by completed
-                if ( hideCompleted )
-                {
+                if (hideCompleted) {
                     this.filteredCourses = this.filteredCourses.filter(course => course.progress.completed === 0);
                 }
             });
@@ -101,8 +99,7 @@ export class ListComponent implements OnInit, OnDestroy {
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -117,8 +114,7 @@ export class ListComponent implements OnInit, OnDestroy {
      *
      * @param query
      */
-    filterByQuery(query: string): void
-    {
+    filterByQuery(query: string): void {
         this.filters.query$.next(query);
     }
 
@@ -127,8 +123,7 @@ export class ListComponent implements OnInit, OnDestroy {
      *
      * @param change
      */
-    filterByCategory(change: MatSelectChange): void
-    {
+    filterByCategory(change: MatSelectChange): void {
         this.filters.categorySlug$.next(change.value);
     }
 
@@ -137,8 +132,7 @@ export class ListComponent implements OnInit, OnDestroy {
      *
      * @param change
      */
-    toggleCompleted(change: MatSlideToggleChange): void
-    {
+    toggleCompleted(change: MatSlideToggleChange): void {
         this.filters.hideCompleted$.next(change.checked);
     }
 
@@ -148,9 +142,22 @@ export class ListComponent implements OnInit, OnDestroy {
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
+    }
+
+    openDescriptionModal(crs: CourseViewModel) {
+        const dialogRef = this.dialog.open(
+            CoursDescriptionModalComponent, {
+                data: {
+                    title: `${crs.orgCode} ${crs.crsCode}: ${crs.title}`,
+                    description: crs.description
+                }
+            });
+
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
     }
 
 }
