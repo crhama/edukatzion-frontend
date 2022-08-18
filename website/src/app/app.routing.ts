@@ -107,5 +107,20 @@ export const appRoutes: Route[] = [
                     .then(m => m.CourseManagementModule)
             },
         ]
+    },
+    //organizations
+    {
+        path: 'organizations',
+        component  : LayoutComponent,
+        resolve    : {
+            initialData: InitialDataResolver,
+        },
+        children: [
+            {
+                path: 'classrooms', 
+                loadChildren: () => import('app/modules/organizations/class-rooms/class-rooms.module')
+                    .then(m => m.ClassRoomsModule)
+            }
+        ]
     }
 ];

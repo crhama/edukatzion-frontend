@@ -3,6 +3,22 @@ import { FuseNavigationItem } from '@fuse/components/navigation';
 
 export const defaultNavigation: FuseNavigationItem[] = [
     {
+        id      : 'organizations',
+        title   : 'organizations',
+        subtitle: 'Organization Structure',
+        type    : 'group',
+        icon    : 'heroicons_outline:home',
+        children: [
+            {
+                id   : 'organizations.classrooms',
+                title: 'Class Rooms',
+                type : 'basic',
+                icon : 'heroicons_outline:clipboard-check',
+                link : '/organizations/classrooms'
+            }
+        ]
+    },
+    {
         id      : 'students',
         title   : 'students',
         subtitle: 'Student Management',
