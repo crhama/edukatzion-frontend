@@ -1,0 +1,14 @@
+<div class="flex items-center">
+    <div class="relative flex flex-0 items-center justify-center w-12 h-12 mr-6 rounded overflow-hidden border">
+        <img
+            class="w-8"
+            *ngIf="show"
+            [alt]="'Thumbnail image'"
+            [src]="imageUrl">
+        <div
+            class="flex items-center justify-center w-full h-full text-xs font-semibold leading-none text-center uppercase"
+            *ngIf="!show">
+            NO THUMB
+        </div>
+    </div>
+</div>

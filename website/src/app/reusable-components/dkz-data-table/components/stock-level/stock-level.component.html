@@ -1,0 +1,21 @@
+<div class="hidden lg:flex items-center">
+    <div class="min-w-4">{{ stockValue}}</div>
+    <!-- Low stock -->
+    <div
+        class="flex items-end ml-2 w-1 h-4 bg-red-200 rounded overflow-hidden"
+        *ngIf="stockValue < lowLevel">
+        <div class="flex w-full h-1/3 bg-red-600"></div>
+    </div>
+    <!-- Medium stock -->
+    <div
+        class="flex items-end ml-2 w-1 h-4 bg-orange-200 rounded overflow-hidden"
+        *ngIf="stockValue >= lowLevel && stockValue < highLevel">
+        <div class="flex w-full h-2/4 bg-orange-400"></div>
+    </div>
+    <!-- High stock -->
+    <div
+        class="flex items-end ml-2 w-1 h-4 bg-green-100 rounded overflow-hidden"
+        *ngIf="stockValue >= highLevel">
+        <div class="flex w-full h-full bg-green-400"></div>
+    </div>
+</div>
