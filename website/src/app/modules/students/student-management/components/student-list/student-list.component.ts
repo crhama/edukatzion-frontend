@@ -1,6 +1,6 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
-import { DkzDataTableViewModel } from 'app/reusable-components/dkz-data-table/+state/models/dkz-data-table.models';
+import { DkzDataTableViewModel, PageChangeViewModel } from 'app/reusable-components/dkz-data-table/+state/models/dkz-data-table.models';
 import { mergeMap, Subject, takeUntil, tap } from 'rxjs';
 import { StudentManagementFacade } from '../../+state/services/student-management-facade.service';
 
@@ -53,6 +53,10 @@ export class StudentListComponent implements OnInit, OnDestroy {
     // Unsubscribe from all subscriptions
     this._unsubscribeAll.next(null);
     this._unsubscribeAll.complete();
+  }
+
+  onPageChange(pChange: PageChangeViewModel){
+    console.log("pChange: ", pChange);
   }
 
 }

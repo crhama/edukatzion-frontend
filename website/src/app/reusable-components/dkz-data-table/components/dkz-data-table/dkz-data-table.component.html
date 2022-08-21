@@ -30,8 +30,8 @@
 
         <!-- Products list -->
         <div class="flex flex-col flex-auto sm:mb-18 overflow-hidden sm:overflow-y-auto">
-            <ng-container *ngIf="model.rows.length > 0; else emptyList">
-                <div class="grid">
+            <ng-container>
+                <div class="grid"  *ngIf="model.rows.length > 0; else emptyList">
                     <!-- Header -->
                     <div class="inventory-grid z-10 sticky top-0 grid gap-4 py-4 px-6 md:px-8 shadow text-md font-semibold text-secondary bg-gray-50 dark:bg-black dark:bg-opacity-5"
                         matSort matSortDisableClear>

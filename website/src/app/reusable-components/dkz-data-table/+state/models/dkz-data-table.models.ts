@@ -34,6 +34,12 @@ export interface PaginationViewModel
     endIndex: number;
 }
 
+export interface PageChangeViewModel{
+    pageIndex: number;
+    pageSize: number;
+    previousPageIndex: number;
+}
+
 export enum ComponentType {
     ACTIVE_STATUS = 0,
     DISPLAY_MONEY = 1,

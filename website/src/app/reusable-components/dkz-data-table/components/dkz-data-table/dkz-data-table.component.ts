@@ -1,31 +1,33 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild, ViewEncapsulation } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
-import { Subject } from 'rxjs';
+import { Subject, takeUntil, tap } from 'rxjs';
 import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
-import { DkzDataTableViewModel } from '../../+state/models/dkz-data-table.models';
+import { DkzDataTableViewModel, PageChangeViewModel } from '../../+state/models/dkz-data-table.models';
 
 @Component({
-  selector: 'dkz-data-table',
-  templateUrl: './dkz-data-table.component.html',
-  styleUrls: ['./dkz-data-table.component.scss'],
-  encapsulation  : ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  animations     : fuseAnimations
+    selector: 'dkz-data-table',
+    templateUrl: './dkz-data-table.component.html',
+    styleUrls: ['./dkz-data-table.component.scss'],
+    encapsulation: ViewEncapsulation.None,
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    animations: fuseAnimations
 })
 export class DkzDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
-  @ViewChild(MatPaginator) private _paginator: MatPaginator;
-  @ViewChild(MatSort) private _sort: MatSort;
+    @ViewChild(MatPaginator) private _paginator: MatPaginator;
+    @ViewChild(MatSort) private _sort: MatSort;
+    _model: DkzDataTableViewModel;
 
-  @Input() model: DkzDataTableViewModel;
-  
+    @Input() model: DkzDataTableViewModel;
+    @Output() pageChange = new EventEmitter<PageChangeViewModel>();
+
     flashMessage: 'success' | 'error' | null = null;
     isLoading: boolean = false;
     searchInputControl: UntypedFormControl = new UntypedFormControl();
-    
+
     private _unsubscribeAll: Subject<any> = new Subject<any>();
 
     /**
@@ -34,8 +36,7 @@ export class DkzDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     constructor(
         private _changeDetectorRef: ChangeDetectorRef,
         private _fuseConfirmationService: FuseConfirmationService
-    )
-    {
+    ) {
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -45,20 +46,34 @@ export class DkzDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     /**
      * On init
      */
-    ngOnInit(): void  {}
+    ngOnInit(): void { }
 
     /**
      * After view init
      */
-    ngAfterViewInit(): void
-    {
+    ngAfterViewInit(): void {
+        if (this._paginator) {
+            this._paginator.page
+                .pipe(
+                    takeUntil(this._unsubscribeAll),
+                    tap((p) => {
+                        console.log('page event: ', p);
+                        const pChange: PageChangeViewModel = {
+                            pageIndex: p.pageIndex,
+                            pageSize: p.pageSize,
+                            previousPageIndex: p.previousPageIndex
+                        }
+                        this.pageChange.emit(pChange);
+                    })
+                )
+                .subscribe()
+        }
     }
 
     /**
      * On destroy
      */
-    ngOnDestroy(): void
-    {
+    ngOnDestroy(): void {
         // Unsubscribe from all subscriptions
         this._unsubscribeAll.next(null);
         this._unsubscribeAll.complete();
@@ -68,35 +83,12 @@ export class DkzDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     // @ Public methods
     // -----------------------------------------------------------------------------------------------------
 
-    
+
 
     /**
      * Create New Item
      */
-    createNewItem(): void
-    {
-    }
-
-
-    /**
-     * Show flash message
-     */
-    showFlashMessage(type: 'success' | 'error'): void
-    {
-        // Show the message
-        this.flashMessage = type;
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-
-        // Hide it after 3 seconds
-        setTimeout(() => {
-
-            this.flashMessage = null;
-
-            // Mark for check
-            this._changeDetectorRef.markForCheck();
-        }, 3000);
+    createNewItem(): void {
     }
 
     /**
@@ -105,8 +97,7 @@ export class DkzDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
      * @param index
      * @param item
      */
-    trackByFn(index: number, item: any): any
-    {
+    trackByFn(index: number, item: any): any {
         return item.id || index;
     }
 
