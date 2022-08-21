@@ -2,6 +2,7 @@ export interface DkzDataTableViewModel {
     tableTitle: string;
     headerColumns: DkzHeaderViewModel[];
     rows: DkzRowViewModel[];
+    pagination: PaginationViewModel;
 }
 
 export interface DkzHeaderViewModel {
@@ -21,6 +22,16 @@ export interface DkzCellViewModel {
     cssClass?: string; 
     highLevel?: number; 
     lowLevel?: number; 
+}
+
+export interface PaginationViewModel
+{
+    length: number;
+    size: number;
+    page: number;
+    lastPage: number;
+    startIndex: number;
+    endIndex: number;
 }
 
 export enum ComponentType {

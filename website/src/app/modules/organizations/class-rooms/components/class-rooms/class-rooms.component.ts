@@ -17,7 +17,7 @@ export class ClassRoomsComponent implements OnInit {
       { name: 'stock', text: 'Stock', cssClass: 'hidden md:block' },
       { name: 'active', text: 'Active', cssClass: 'hidden md:block' }
     ],
-    rows: [ /*
+    rows: [
       {
         id: '1',
         cells: [
@@ -87,8 +87,16 @@ export class ClassRoomsComponent implements OnInit {
             comp: ComponentType.ACTIVE_STATUS
           }
         ]
-      } */
-    ]
+      }
+    ],
+    pagination: {
+      length: 23,
+      size: 5,
+      page: 0,
+      lastPage: 2,
+      startIndex: 0,
+      endIndex: 2
+    }
   }
 
   constructor() { }
