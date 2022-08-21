@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { MatPaginator } from '@angular/material/paginator';
@@ -8,38 +8,22 @@ import { fuseAnimations } from '@fuse/animations';
 import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { InventoryBrand, InventoryCategory, InventoryPagination, InventoryProduct, InventoryTag, InventoryVendor } from '../../+state/models/inventory.types';
 import { InventoryService } from '../../+state/services/inventory.service';
+import { DkzDataTableViewModel } from '../../+state/models/dkz-data-table.models';
 
 @Component({
   selector: 'dkz-data-table',
   templateUrl: './dkz-data-table.component.html',
-  styles         : [
-    /* language=SCSS */
-    `
-        .inventory-grid {
-            grid-template-columns: 48px auto 40px;
-
-            @screen sm {
-                grid-template-columns: 48px auto 112px 72px;
-            }
-
-            @screen md {
-                grid-template-columns: 48px 112px auto 112px 72px;
-            }
-
-            @screen lg {
-                grid-template-columns: 48px 112px auto 112px 96px 96px 72px;
-            }
-        }
-    `
-],
-encapsulation  : ViewEncapsulation.None,
-changeDetection: ChangeDetectionStrategy.OnPush,
-animations     : fuseAnimations
+  styleUrls: ['./dkz-data-table.component.scss'],
+  encapsulation  : ViewEncapsulation.None,
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations     : fuseAnimations
 })
 export class DkzDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild(MatPaginator) private _paginator: MatPaginator;
-    @ViewChild(MatSort) private _sort: MatSort;
+  @ViewChild(MatSort) private _sort: MatSort;
+
+  @Input() model: DkzDataTableViewModel;
 
     products$: Observable<InventoryProduct[]>;
 
@@ -484,9 +468,9 @@ export class DkzDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     /**
-     * Create product
+     * Create New Item
      */
-    createProduct(): void
+    createNewItem(): void
     {
         // Create the product
         this._inventoryService.createProduct().subscribe((newProduct) => {

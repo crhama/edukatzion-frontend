@@ -8,7 +8,7 @@ export class ThumbnailComponent implements OnInit {
   show = false;
   imageUrl = ''
 
-  @Input() src(url: string){
+  @Input() val(url: string){
     if(url){
       this.imageUrl = url;
       this.show = true;

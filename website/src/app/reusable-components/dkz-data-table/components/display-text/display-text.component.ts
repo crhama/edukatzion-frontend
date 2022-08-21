@@ -4,12 +4,12 @@ import { Component, Input, OnInit } from '@angular/core';
   selector: 'app-display-text',
   template: `
     <div [ngClass]="cssClass">
-      {{ textValue }}
+      {{ val }}
     </div>
   `
 })
 export class DisplayTextComponent implements OnInit {
-  @Input() textValue = '';
+  @Input() val = '';
   @Input() cssClass = ''
 
   constructor() { }

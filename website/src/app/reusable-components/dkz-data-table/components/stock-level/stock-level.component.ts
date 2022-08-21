@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./stock-level.component.scss']
 })
 export class StockLevelComponent implements OnInit {
-  @Input() stockValue: number;
+  @Input() val: number;
   @Input() highLevel: number;
   @Input() lowLevel: number;
 
