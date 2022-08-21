@@ -13,7 +13,7 @@ export class StudentManagementEffects {
         this._actions$.pipe(
             ofType(fromActions.requestStudentList),
             mergeMap((action) => this._service
-                .getStudentList(action.pageIndex, action.pageSize)
+                .getStudentList(action.pChange)
                 .pipe(
                     map((studentResult) => fromActions
                         .saveStudentList({ studentResult }))

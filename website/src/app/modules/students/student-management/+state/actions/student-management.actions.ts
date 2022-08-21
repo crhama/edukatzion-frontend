@@ -1,9 +1,10 @@
 import { createAction, props } from "@ngrx/store";
+import { PageChangeViewModel } from "app/reusable-components/dkz-data-table/+state/models/dkz-data-table.models";
 import { StudentResultViewModel, StudentViewModel } from "../models/student-management.models";
 
 export const requestStudentList = createAction(
     '[Student Management] Request Student list',
-    props<{ pageIndex: number; pageSize: number; }>()
+    props<{ pChange: PageChangeViewModel }>()
 );
 
 export const saveStudentList = createAction(

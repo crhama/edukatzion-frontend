@@ -57,7 +57,6 @@ export class DkzDataTableComponent implements OnInit, AfterViewInit, OnDestroy {
                 .pipe(
                     takeUntil(this._unsubscribeAll),
                     tap((p) => {
-                        console.log('page event: ', p);
                         const pChange: PageChangeViewModel = {
                             pageIndex: p.pageIndex,
                             pageSize: p.pageSize,

@@ -7,7 +7,7 @@ import * as fromActions from '../actions/student-management.actions';
 import * as fromSelectors from '../selectors/student-management.selectors';
 import { PaginationViewModel } from "app/shared/+state/models/pagination.model";
 import { convertStudentVmToDkzDtViewModel } from "../helpers/convert-student-vm-to-dkz-dt-vm.helper";
-import { DkzDataTableViewModel } from "app/reusable-components/dkz-data-table/+state/models/dkz-data-table.models";
+import { DkzDataTableViewModel, PageChangeViewModel } from "app/reusable-components/dkz-data-table/+state/models/dkz-data-table.models";
 
 @Injectable({
     providedIn: 'root'
@@ -34,8 +34,14 @@ export class StudentManagementFacade {
     constructor(private _store: Store<StudentListState>){}
 
     
-    requesStudentList(pageIndex = 0, pageSize = 5) {
-        this._store.dispatch(fromActions.requestStudentList(
-            { pageIndex, pageSize }));
+    requesStudentList(pChange: PageChangeViewModel = undefined) {
+        if(!pChange){
+            pChange = {
+                pageIndex: 0, 
+                pageSize: 5,
+                previousPageIndex: 0
+            }
+        }
+        this._store.dispatch(fromActions.requestStudentList({ pChange }));
     }
 }

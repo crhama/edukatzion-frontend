@@ -57,6 +57,7 @@ export class StudentListComponent implements OnInit, OnDestroy {
 
   onPageChange(pChange: PageChangeViewModel){
     console.log("pChange: ", pChange);
+    this._mgtFacade.requesStudentList(pChange);
   }
 
 }
