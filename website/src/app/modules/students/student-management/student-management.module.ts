@@ -17,6 +17,7 @@ import * as fromReducer from '../student-management/+state/reducers/student-mana
 import { EffectsModule } from '@ngrx/effects';
 import { StudentManagementEffects } from './+state/effects/student-management.effects';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DkzDataTableModule } from 'app/reusable-components/dkz-data-table/dkz-data-table.module';
 
 
 
@@ -37,6 +38,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgApexchartsModule,
     MatPaginatorModule,
     SharedModule,
+
+    DkzDataTableModule,
 
     StoreModule.forFeature(
       fromReducer.STUDENT_LIST_KEY,

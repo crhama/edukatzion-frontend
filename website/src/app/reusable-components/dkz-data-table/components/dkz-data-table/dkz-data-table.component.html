@@ -15,7 +15,7 @@
             <mat-form-field class="fuse-mat-dense fuse-mat-no-subscript fuse-mat-rounded min-w-64">
                 <mat-icon class="icon-size-5" matPrefix [svgIcon]="'heroicons_solid:search'"></mat-icon>
                 <input matInput [formControl]="searchInputControl" [autocomplete]="'off'"
-                    [placeholder]="'Search products'">
+                    [placeholder]="'Search Items'">
             </mat-form-field>
             <!-- Add product button -->
             <button class="ml-4" mat-flat-button [color]="'primary'" (click)="createNewItem()">
@@ -45,27 +45,56 @@
                     <ng-container *ngFor="let row of model.rows; trackBy: trackByFn">
                         <div class="inventory-grid grid items-center gap-4 py-3 px-6 md:px-8 border-b">
                             <ng-container *ngFor="let cell of row.cells">
-                                <!-- Image -->
-                                <app-thumbnail *ngIf="cell.comp === 4" [val]="cell.val">
+                                <!-- THUMBNAIL -->
+                                <app-thumbnail 
+                                    *ngIf="cell.comp === 4" 
+                                    [val]="cell.val" 
+                                    [cssClass]="cell.cssClass">
                                 </app-thumbnail>
 
-                                <!-- Name -->
-                                <app-display-text *ngIf="cell.comp === 2" [val]="cell.val" [cssClass]="'truncate'">
+                                <!-- DISPLAY_TEXT -->
+                                <app-display-text 
+                                    *ngIf="cell.comp === 2" 
+                                    [val]="cell.val" 
+                                    [cssClass]="cell.cssClass">
                                 </app-display-text>
 
-                                <!-- Price -->
-                                <app-display-money *ngIf="cell.comp === 1" [val]="cell.val"
-                                    [cssClass]="'hidden sm:block'">
+                                <!-- ACTIVE_STATUS -->
+                                <app-display-money 
+                                    *ngIf="cell.comp === 1" 
+                                    [val]="cell.val"
+                                    [cssClass]="cell.cssClass">
                                 </app-display-money>
 
-                                <!-- Stock -->
-                                <app-stock-level *ngIf="cell.comp === 3" [val]="cell.val" [highLevel]="30"
-                                    [lowLevel]="20">
+                                <!-- STOCK_LEVEL -->
+                                <app-stock-level 
+                                    *ngIf="cell.comp === 3" 
+                                    [val]="cell.val" 
+                                    [highLevel]="30"
+                                    [lowLevel]="20"
+                                    [cssClass]="cell.cssClass">
                                 </app-stock-level>
 
-                                <!-- Active -->
-                                <app-active-status *ngIf="cell.comp === 0" [val]="cell.val">
+                                <!-- ACTIVE_STATUS -->
+                                <app-active-status 
+                                    *ngIf="cell.comp === 0" 
+                                    [val]="cell.val"
+                                    [cssClass]="cell.cssClass">
                                 </app-active-status>
+
+                                <!-- PROCESS_STATUS -->
+                                <app-process-status 
+                                    *ngIf="cell.comp === 5" 
+                                    [val]="cell.val"
+                                    [cssClass]="cell.cssClass">
+                                </app-process-status>
+
+                                <!-- DISPLAY_DATETIME -->
+                                <app-display-date-time 
+                                    *ngIf="cell.comp === 6" 
+                                    [val]="cell.val"
+                                    [cssClass]="cell.cssClass">
+                                </app-display-date-time>
                             </ng-container>
 
                             <!-- Details button -->

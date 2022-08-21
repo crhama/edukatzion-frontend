@@ -39,5 +39,12 @@ export enum ComponentType {
     DISPLAY_MONEY = 1,
     DISPLAY_TEXT = 2,
     STOCK_LEVEL = 3,
-    THUMBNAIL = 4
+    THUMBNAIL = 4,
+    PROCESS_STATUS = 5,
+    DISPLAY_DATETIME = 6
+}
+
+export enum ProcessStatus {
+    PENDIND = 'pending',
+    COMPLETED = 'completed'
 }

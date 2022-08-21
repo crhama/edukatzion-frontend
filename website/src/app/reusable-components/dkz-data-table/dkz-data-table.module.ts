@@ -19,6 +19,8 @@ import { DisplayTextComponent } from './components/display-text/display-text.com
 import { DisplayMoneyComponent } from './components/display-money/display-money.component';
 import { StockLevelComponent } from './components/stock-level/stock-level.component';
 import { ActiveStatusComponent } from './components/active-status/active-status.component';
+import { ProcessStatusComponent } from './components/process-status/process-status.component';
+import { DisplayDateTimeComponent } from './components/display-date-time/display-date-time.component';
 
 @NgModule({
     declarations:[
@@ -27,7 +29,9 @@ import { ActiveStatusComponent } from './components/active-status/active-status.
     DisplayTextComponent,
     DisplayMoneyComponent,
     StockLevelComponent,
-    ActiveStatusComponent
+    ActiveStatusComponent,
+    ProcessStatusComponent,
+    DisplayDateTimeComponent
   ],
     imports: [
         MatButtonModule,
