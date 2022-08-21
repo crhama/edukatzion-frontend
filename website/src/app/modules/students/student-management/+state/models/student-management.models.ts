@@ -8,6 +8,7 @@ export interface StudentResultViewModel{
 export interface StudentViewModel {
     studentId: string; 
     firstName: string; 
+    middleName: string;
     lastName: string; 
     registrationStatus: string; 
     lastUpdated: Date
