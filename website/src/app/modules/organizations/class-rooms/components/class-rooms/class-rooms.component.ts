@@ -17,7 +17,7 @@ export class ClassRoomsComponent implements OnInit {
       { name: 'stock', text: 'Stock', cssClass: 'hidden md:block' },
       { name: 'active', text: 'Active', cssClass: 'hidden md:block' }
     ],
-    rows: [
+    rows: [ /*
       {
         id: '1',
         cells: [
@@ -87,7 +87,7 @@ export class ClassRoomsComponent implements OnInit {
             comp: ComponentType.ACTIVE_STATUS
           }
         ]
-      }
+      } */
     ]
   }
 
