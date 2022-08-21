@@ -58,12 +58,12 @@ export function convertStudentVmToDkzDtViewModel(
         ],
         rows,
         pagination: {
-            length: 23,
+            length: 0,
             size: 5,
             page: 0,
-            lastPage: 2,
+            lastPage: 0,
             startIndex: 0,
-            endIndex: 2
+            endIndex: 0
         }
     };
 
