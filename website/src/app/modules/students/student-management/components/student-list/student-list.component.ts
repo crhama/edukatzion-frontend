@@ -30,6 +30,7 @@ export class StudentListComponent implements OnInit, OnDestroy {
         takeUntil(this._unsubscribeAll),
         tap((data) => {
           this.model = data;
+          this.model.tableTitle = 'Student List'
         }),
         mergeMap(() => this._mgtFacade.pagination$
           .pipe(

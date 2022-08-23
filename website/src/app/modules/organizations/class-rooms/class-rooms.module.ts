@@ -4,6 +4,10 @@ import { RouterModule } from '@angular/router';
 import { classRoomsRoutes } from './class-rooms.routing';
 import { ClassRoomsComponent } from './components/class-rooms/class-rooms.component';
 import { DkzDataTableModule } from 'app/reusable-components/dkz-data-table/dkz-data-table.module';
+import { StoreModule } from '@ngrx/store';
+import * as fromReducer from './+state/reducers/class-rooms.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { ClassRoomsEffects } from './+state/effects/class-rooms.effects';
 
 
 
@@ -15,7 +19,14 @@ import { DkzDataTableModule } from 'app/reusable-components/dkz-data-table/dkz-d
     CommonModule,
     RouterModule.forChild(classRoomsRoutes),
 
-    DkzDataTableModule
+    DkzDataTableModule,
+
+    StoreModule.forFeature(
+      fromReducer.CLASSROOM_LIST_KEY,
+      fromReducer.classroomListReducer
+    ),
+
+    EffectsModule.forFeature([ClassRoomsEffects])
   ]
 })
 export class ClassRoomsModule { }

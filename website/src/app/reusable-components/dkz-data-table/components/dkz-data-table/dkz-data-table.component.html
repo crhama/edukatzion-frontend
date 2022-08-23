@@ -70,8 +70,8 @@
                                 <app-stock-level 
                                     *ngIf="cell.comp === 3" 
                                     [val]="cell.val" 
-                                    [highLevel]="30"
-                                    [lowLevel]="20"
+                                    [highLevel]="cell.highLevel"
+                                    [lowLevel]="cell.lowLevel"
                                     [cssClass]="cell.cssClass">
                                 </app-stock-level>
 
