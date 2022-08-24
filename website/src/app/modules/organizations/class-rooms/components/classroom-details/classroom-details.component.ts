@@ -1,30 +1,36 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
-import { Subject, takeUntil } from 'rxjs';
-import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
+import { Component, OnInit } from '@angular/core';
+import { DkzDrawerDetails } from 'app/reusable-components/dkz-drawer-details/+state/models/dkz-drawer-details.models';
 
 @Component({
   selector: 'app-classroom-details',
-  templateUrl: './classroom-details.component.html',
-  styleUrls: ['./classroom-details.component.scss'],
-  encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.OnPush
+  template: `
+    <dkz-drawer-details [panels]="panels">
+      <ng-template #childcomp let-selectedPanel>
+      <ng-container [ngSwitch]="selectedPanel">
+        <!-- description -->
+        <ng-container *ngSwitchCase="'description'">
+            <classroom-description></classroom-description>
+        </ng-container>
+        <!-- students -->
+        <ng-container *ngSwitchCase="'students'">
+            <classroom-students></classroom-students>
+        </ng-container>
+        <!-- courses -->
+        <ng-container *ngSwitchCase="'courses'">
+            <classroom-courses></classroom-courses>
+        </ng-container>
+        </ng-container>
+      </ng-template>      
+    </dkz-drawer-details>
+    `
 })
-export class ClassroomDetailsComponent implements OnInit, OnDestroy {
-  @ViewChild('drawer') drawer: MatDrawer;
-  drawerMode: 'over' | 'side' = 'side';
-  drawerOpened: boolean = true;
-  panels: any[] = [];
-  selectedPanel: string = 'description';
-  private _unsubscribeAll: Subject<any> = new Subject<any>();
+export class ClassroomDetailsComponent implements OnInit {
+  panels: DkzDrawerDetails[] = [];
 
   /**
      * Constructor
      */
-  constructor(
-    private _changeDetectorRef: ChangeDetectorRef,
-    private _fuseMediaWatcherService: FuseMediaWatcherService
-  ) {
+  constructor() {
   }
 
 
@@ -59,71 +65,10 @@ export class ClassroomDetailsComponent implements OnInit, OnDestroy {
         description: 'Manage courses'
       }
     ];
-
-    // Subscribe to media changes
-    this._fuseMediaWatcherService.onMediaChange$
-      .pipe(takeUntil(this._unsubscribeAll))
-      .subscribe(({ matchingAliases }) => {
-
-        // Set the drawerMode and drawerOpened
-        if (matchingAliases.includes('lg')) {
-          this.drawerMode = 'side';
-          this.drawerOpened = true;
-        }
-        else {
-          this.drawerMode = 'over';
-          this.drawerOpened = false;
-        }
-
-        // Mark for check
-        this._changeDetectorRef.markForCheck();
-      });
-  }
-
-  /**
-     * On destroy
-     */
-  ngOnDestroy(): void {
-    // Unsubscribe from all subscriptions
-    this._unsubscribeAll.next(null);
-    this._unsubscribeAll.complete();
   }
 
   // -----------------------------------------------------------------------------------------------------
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
-
-  /**
-   * Navigate to the panel
-   *
-   * @param panel
-   */
-  goToPanel(panel: string): void {
-    this.selectedPanel = panel;
-
-    // Close the drawer on 'over' mode
-    if (this.drawerMode === 'over') {
-      this.drawer.close();
-    }
-  }
-
-  /**
-   * Get the details of the panel
-   *
-   * @param id
-   */
-  getPanelInfo(id: string): any {
-    return this.panels.find(panel => panel.id === id);
-  }
-
-  /**
-   * Track by function for ngFor loops
-   *
-   * @param index
-   * @param item
-   */
-  trackByFn(index: number, item: any): any {
-    return item.id || index;
-  }
 
 }
