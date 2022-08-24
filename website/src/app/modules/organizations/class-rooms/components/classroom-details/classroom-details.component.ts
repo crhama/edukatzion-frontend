@@ -4,7 +4,8 @@ import { DkzDrawerDetails } from 'app/reusable-components/dkz-drawer-details/+st
 @Component({
   selector: 'app-classroom-details',
   template: `
-    <dkz-drawer-details [panels]="panels" [title]="title">
+    <dkz-drawer-details [panels]="panels" 
+      [title]="title" [selectedPanel]="selectedPanel">
       <ng-template #childcomp let-selectedPanel>
       <ng-container [ngSwitch]="selectedPanel">
         <!-- description -->
@@ -27,6 +28,7 @@ import { DkzDrawerDetails } from 'app/reusable-components/dkz-drawer-details/+st
 export class ClassroomDetailsComponent implements OnInit {
   panels: DkzDrawerDetails[] = [];
   title = 'Classroom: 1A';
+  selectedPanel: string = 'students';
 
   /**
      * Constructor

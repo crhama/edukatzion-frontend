@@ -1,4 +1,9 @@
-import { AfterViewInit, ChangeDetectionStrategy, ChangeDetectorRef, Component, ContentChild, ElementRef, Input, OnDestroy, OnInit, TemplateRef, ViewChild, ViewEncapsulation } from '@angular/core';
+import { 
+  ChangeDetectionStrategy, 
+  ChangeDetectorRef, Component, 
+  ContentChild, Input, OnInit, 
+  TemplateRef, ViewChild, ViewEncapsulation 
+} from '@angular/core';
 import { MatDrawer } from '@angular/material/sidenav';
 import { Subject, takeUntil } from 'rxjs';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
@@ -19,7 +24,7 @@ export class DkzDrawerDetailsComponent implements OnInit {
   
   @Input() panels: DkzDrawerDetails[] = [];
   @Input() title: string = 'Details';
-  selectedPanel: string = 'description';
+  @Input() selectedPanel: string;
   private _unsubscribeAll: Subject<any> = new Subject<any>();
 
   /**
