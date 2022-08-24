@@ -1,6 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { MatButtonModule } from '@angular/material/button';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { FuseAlertModule } from '@fuse/components/alert';
+import { SharedModule } from 'app/shared/shared.module';
 import { classRoomsRoutes } from './class-rooms.routing';
 import { ClassRoomsComponent } from './components/class-rooms/class-rooms.component';
 import { DkzDataTableModule } from 'app/reusable-components/dkz-data-table/dkz-data-table.module';
@@ -13,7 +23,7 @@ import { ClassroomStudentsComponent } from './components/classroom-students/clas
 import { ClassroomCoursesComponent } from './components/classroom-courses/classroom-courses.component';
 import { ClassroomDescriptionComponent } from './components/classroom-description/classroom-description.component';
 import { DkzDrawerDetailsModule } from 'app/reusable-components/dkz-drawer-details/dkz-drawer-details.module';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -27,6 +37,19 @@ import { DkzDrawerDetailsModule } from 'app/reusable-components/dkz-drawer-detai
   imports: [
     CommonModule,
     RouterModule.forChild(classRoomsRoutes),
+
+    MatButtonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatRadioModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    FuseAlertModule,
+    MatPaginatorModule,
+    SharedModule,
+
     
     DkzDataTableModule,
     DkzDrawerDetailsModule,
