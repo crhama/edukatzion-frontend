@@ -24,6 +24,7 @@ import { ClassroomCoursesComponent } from './components/classroom-courses/classr
 import { ClassroomDescriptionComponent } from './components/classroom-description/classroom-description.component';
 import { DkzDrawerDetailsModule } from 'app/reusable-components/dkz-drawer-details/dkz-drawer-details.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { DkzDataListModule } from 'app/reusable-components/dkz-data-list/dkz-data-list.module';
 
 
 @NgModule({
@@ -53,6 +54,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     
     DkzDataTableModule,
     DkzDrawerDetailsModule,
+    DkzDataListModule,
 
     StoreModule.forFeature(
       fromReducer.CLASSROOM_LIST_KEY,
