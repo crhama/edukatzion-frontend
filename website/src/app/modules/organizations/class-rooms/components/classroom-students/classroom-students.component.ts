@@ -14,60 +14,55 @@ export class ClassroomStudentsComponent implements OnInit {
           avatar: 'assets/images/avatars/male-01.jpg',
           name: 'Dejesus Michael',
           email: 'dejesusmichael@mail.org',
-          role: 'admin'
+          status: 'enrolled'
         },
         {
           avatar: 'assets/images/avatars/male-03.jpg',
           name: 'Mclaughlin Steele',
           email: 'mclaughlinsteele@mail.me',
-          role: 'admin'
+          status: 'enrolled'
         },
         {
           avatar: 'assets/images/avatars/female-02.jpg',
           name: 'Laverne Dodson',
           email: 'lavernedodson@mail.ca',
-          role: 'write'
+          status: 'waitingList'
         },
         {
           avatar: 'assets/images/avatars/female-03.jpg',
           name: 'Trudy Berg',
           email: 'trudyberg@mail.us',
-          role: 'read'
+          status: 'enrolled'
         },
         {
           avatar: 'assets/images/avatars/male-07.jpg',
           name: 'Lamb Underwood',
           email: 'lambunderwood@mail.me',
-          role: 'read'
+          status: 'enrolled'
         },
         {
           avatar: 'assets/images/avatars/male-08.jpg',
           name: 'Mcleod Wagner',
           email: 'mcleodwagner@mail.biz',
-          role: 'read'
+          status: 'enrolled'
         },
         {
           avatar: 'assets/images/avatars/female-07.jpg',
           name: 'Shannon Kennedy',
           email: 'shannonkennedy@mail.ca',
-          role: 'read'
+          status: 'waitingList'
         }
       ],
-      roles: [
+      statuses: [
         {
-          label: 'Read',
-          value: 'read',
-          description: 'Can read and clone this repository. Can also open and comment on issues and pull requests.'
+          label: 'enrolled',
+          value: 'enrolled',
+          description: 'Student enrollement is confirmed.'
         },
         {
-          label: 'Write',
-          value: 'write',
-          description: 'Can read, clone, and push to this repository. Can also manage issues and pull requests.'
-        },
-        {
-          label: 'Admin',
-          value: 'admin',
-          description: 'Can read, clone, and push to this repository. Can also manage issues, pull requests, and repository settings, including adding collaborators.'
+          label: 'Waiting List',
+          value: 'waitingList',
+          description: 'Waiting for the office decision.'
         }
       ]
     },

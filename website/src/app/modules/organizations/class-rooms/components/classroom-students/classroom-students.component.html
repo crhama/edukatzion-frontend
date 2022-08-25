@@ -21,18 +21,18 @@
                 </div>
                 <div class="flex items-center mt-4 sm:mt-0 sm:ml-auto">
                     <div class="order-2 sm:order-1 ml-4 sm:ml-0">
-                        <mat-form-field class="fuse-mat-dense fuse-mat-no-subscript w-32">
-                            <mat-select [panelClass]="'w-72 min-w-72 max-w-72 h-auto max-h-none'" [value]="member.role"
-                                disableOptionCentering #roleSelect="matSelect">
+                        <mat-form-field class="fuse-mat-dense fuse-mat-no-subscript w-40">
+                            <mat-select [panelClass]="'w-72 min-w-72 max-w-72 h-auto max-h-none'" [value]="member.status"
+                                disableOptionCentering #statusSelect="matSelect">
                                 <mat-select-trigger class="text-md">
-                                    <span>Role:</span>
-                                    <span class="ml-1 font-medium">{{roleSelect.value | titlecase}}</span>
+                                    <span>Status:</span>
+                                    <span class="ml-1 font-medium">{{statusSelect.value | titlecase}}</span>
                                 </mat-select-trigger>
-                                <ng-container *ngFor="let role of data.roles">
-                                    <mat-option class="h-auto py-4 leading-none" [value]="role.value">
-                                        <div class="font-medium">{{role.label}}</div>
+                                <ng-container *ngFor="let status of data.statuses">
+                                    <mat-option class="h-auto py-4 leading-none" [value]="status.value">
+                                        <div class="font-medium">{{status.label}}</div>
                                         <div class="mt-1.5 text-sm whitespace-normal leading-normal text-secondary">
-                                            {{role.description}}</div>
+                                            {{status.description}}</div>
                                     </mat-option>
                                 </ng-container>
                             </mat-select>
