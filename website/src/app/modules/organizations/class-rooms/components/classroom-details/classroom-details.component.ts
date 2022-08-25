@@ -28,7 +28,7 @@ import { DkzDrawerDetails } from 'app/reusable-components/dkz-drawer-details/+st
 export class ClassroomDetailsComponent implements OnInit {
   panels: DkzDrawerDetails[] = [];
   title = 'Classroom: 1A';
-  selectedPanel: string = 'students';
+  selectedPanel: string = 'courses';
 
   /**
      * Constructor
