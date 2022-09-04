@@ -1,12 +1,13 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
 import { createReducer, on } from "@ngrx/store";
 import { PaginationViewModel } from "app/shared/+state/models/pagination.model";
-//import * as fromActions from '../actions/course-catalog.actions';
+import * as fromActions from '../actions/course-catalog.actions';
 import { CourseCatalogItemViewModel } from "../models/course-management.model";
 
 export const COURSE_CATALOG_KEY = 'courseCatalog';
 
 export interface CourseCatalogState extends EntityState<CourseCatalogItemViewModel> {
+    courseCatalogLoaded: boolean;
     pagination: PaginationViewModel;
     selectId: string | null;
 }
@@ -22,12 +23,23 @@ export const adapter: EntityAdapter<CourseCatalogItemViewModel>
     });
 
 export const initialState: CourseCatalogState = adapter.getInitialState({
+    courseCatalogLoaded: false,
     pagination: { pageIndex: 0, pageSize: 0, length: 0 },
     selectId: ''
 })
 
 export const courseCatalogReducer = createReducer(
-    initialState
+    initialState,
+    on(fromActions.loadCourseCatalogSuccess, (state, { courseCatalogResult }) => {
+        return adapter.setAll(
+            courseCatalogResult.courseCatalog,
+            {
+                ...state,
+                pagination: courseCatalogResult.pagination,
+                courseCatalogLoaded: true
+            }
+        )
+    })
 );
 
 // get the selectors

@@ -1,4 +1,4 @@
-import { combineReducers } from '@ngrx/store';
+import { combineReducers, createFeatureSelector } from '@ngrx/store';
 import * as fromCatalog from '../reducers/course-catalog.reducer';
 
 export const COURSE_MGT_KEY = 'courseManagement';
@@ -10,3 +10,7 @@ export interface CourseManagementState {
 export const reducers = combineReducers({
     courseCatalog: fromCatalog.courseCatalogReducer
 });
+
+export const getCourseManagementStateFeatureState 
+    = createFeatureSelector<CourseManagementState>(
+        COURSE_MGT_KEY);

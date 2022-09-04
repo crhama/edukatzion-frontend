@@ -20,6 +20,8 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CoursDescriptionModalComponent } from './modals/cours-description-modal/cours-description-modal.component';
 import { StoreModule } from '@ngrx/store';
 import * as fromCourseMgt from '../course-management/+state/reducers'
+import { EffectsModule } from '@ngrx/effects';
+import { CourseManagementEffect } from './+state/effects/course-management.effect';
 
 
 
@@ -46,7 +48,8 @@ import * as fromCourseMgt from '../course-management/+state/reducers'
     MatTabsModule,
     MatDialogModule,
 
-    StoreModule.forFeature(fromCourseMgt.COURSE_MGT_KEY, fromCourseMgt.reducers)
+    StoreModule.forFeature(fromCourseMgt.COURSE_MGT_KEY, fromCourseMgt.reducers),
+    EffectsModule.forFeature([CourseManagementEffect])
   ]
 })
 export class CourseManagementModule { }
