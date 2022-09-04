@@ -13,4 +13,9 @@ export const selectClassroomList = createSelector(
 export const selectStudentListPagination = createSelector(
     getClassroomsFeatureState,
     state => state.pagination
+);
+
+export const selectClassroomsLoaded = createSelector(
+    getClassroomsFeatureState,
+    state => state.classroomsLoaded
 )

@@ -5,7 +5,7 @@ import { ClassroomDetailsComponent } from "./components/classroom-details/classr
 export const classRoomsRoutes: Route[] = [
     {
         path: '',
-        component: ClassRoomsComponent
+        component: ClassRoomsComponent,
     },
     {
         path: 'details',

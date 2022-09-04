@@ -14,7 +14,6 @@ export class ClassroomCoursesComponent implements OnInit {
       courses: [
         {
           title: 'Data Communications and Networks',
-          avatar: 'assets/images/avatars/male-01.jpg',
           name: 'Dejesus Michael',
           email: 'dejesusmichael@mail.org',
           type: 'required'

@@ -23,8 +23,6 @@ export class CourseCatalogResolver implements Resolve<boolean> {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> {
-    // this._facade.loadCourseCatalog();
-    // return this._facade.courses$
     return this._store.pipe(
       select(selectCourseCatalogLoaded),
       tap((loaded) => {

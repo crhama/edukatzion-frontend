@@ -7,6 +7,7 @@ import * as fromActions from '../actions/class-rooms.actions';
 export const CLASSROOM_LIST_KEY = 'clasroomList';
 
 export interface ClassRoomListState extends EntityState<ClassroomViewModel> {
+    classroomsLoaded: boolean;
     pagination: PaginationViewModel;
 }
 
@@ -14,6 +15,7 @@ export const adapter: EntityAdapter<ClassroomViewModel>
     = createEntityAdapter<ClassroomViewModel>();
 
 export const initialState: ClassRoomListState = adapter.getInitialState({
+    classroomsLoaded: false,
     pagination: { pageIndex: 0, pageSize: 0, length: 0 }
 })
 
@@ -24,7 +26,8 @@ export const classroomListReducer = createReducer(
             classroomResult.classrooms, 
             {
                 ...state,
-                pagination: classroomResult.pagination
+                pagination: classroomResult.pagination,
+                classroomsLoaded: true
             })
     })
 );
