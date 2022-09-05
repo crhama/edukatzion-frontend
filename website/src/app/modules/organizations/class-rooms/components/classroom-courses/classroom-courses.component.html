@@ -1,4 +1,4 @@
-<dkz-data-list [model]="model">
+<dkz-data-list [model]="coursesModel">
     <ng-template #childcomp let-data>
         <ng-container *ngFor="let course of data.courses; trackBy: trackByFn;">
             <div class="flex flex-col sm:flex-row sm:items-center py-6">

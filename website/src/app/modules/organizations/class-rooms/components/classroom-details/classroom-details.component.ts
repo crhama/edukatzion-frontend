@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DkzDataListViewModel } from 'app/reusable-components/dkz-data-list/models/dkz-data-list.models';
 import { DkzDrawerDetails } from 'app/reusable-components/dkz-drawer-details/+state/models/dkz-drawer-details.models';
 
 @Component({
@@ -10,15 +11,18 @@ import { DkzDrawerDetails } from 'app/reusable-components/dkz-drawer-details/+st
       <ng-container [ngSwitch]="selectedPanel">
         <!-- description -->
         <ng-container *ngSwitchCase="'description'">
-            <classroom-description></classroom-description>
+            <classroom-description>              
+            </classroom-description>
         </ng-container>
         <!-- students -->
         <ng-container *ngSwitchCase="'students'">
-            <classroom-students></classroom-students>
+            <classroom-students [studentsModel]="studentsModel">              
+            </classroom-students>
         </ng-container>
         <!-- courses -->
         <ng-container *ngSwitchCase="'courses'">
-            <classroom-courses></classroom-courses>
+            <classroom-courses  [coursesModel]="coursesModel">              
+            </classroom-courses>
         </ng-container>
         </ng-container>
       </ng-template>      
@@ -28,7 +32,156 @@ import { DkzDrawerDetails } from 'app/reusable-components/dkz-drawer-details/+st
 export class ClassroomDetailsComponent implements OnInit {
   panels: DkzDrawerDetails[] = [];
   title = 'Classroom: 1A';
-  selectedPanel: string = 'students';
+  selectedPanel: string = 'description';
+
+  studentsModel: DkzDataListViewModel = {
+    data: {
+      members: [
+        {
+          avatar: 'assets/images/avatars/male-01.jpg',
+          name: 'Dejesus Michael',
+          email: 'dejesusmichael@mail.org',
+          status: 'enrolled'
+        },
+        {
+          avatar: 'assets/images/avatars/male-03.jpg',
+          name: 'Mclaughlin Steele',
+          email: 'mclaughlinsteele@mail.me',
+          status: 'enrolled'
+        },
+        {
+          avatar: 'assets/images/avatars/female-02.jpg',
+          name: 'Laverne Dodson',
+          email: 'lavernedodson@mail.ca',
+          status: 'waitingList'
+        },
+        {
+          avatar: 'assets/images/avatars/female-03.jpg',
+          name: 'Trudy Berg',
+          email: 'trudyberg@mail.us',
+          status: 'enrolled'
+        },
+        {
+          avatar: 'assets/images/avatars/male-07.jpg',
+          name: 'Lamb Underwood',
+          email: 'lambunderwood@mail.me',
+          status: 'enrolled'
+        },
+        {
+          avatar: 'assets/images/avatars/male-08.jpg',
+          name: 'Mcleod Wagner',
+          email: 'mcleodwagner@mail.biz',
+          status: 'enrolled'
+        },
+        {
+          avatar: 'assets/images/avatars/female-07.jpg',
+          name: 'Shannon Kennedy',
+          email: 'shannonkennedy@mail.ca',
+          status: 'waitingList'
+        }
+      ],
+      statuses: [
+        {
+          label: 'enrolled',
+          value: 'enrolled',
+          description: 'Student enrollement is confirmed.'
+        },
+        {
+          label: 'Waiting List',
+          value: 'waitingList',
+          description: 'Waiting for the office decision.'
+        }
+      ]
+    },
+    pagination: {
+      length: 0,
+      size: 5,
+      page: 0,
+      lastPage: 0,
+      startIndex: 0,
+      endIndex: 0,
+    }
+  }
+
+  coursesModel: DkzDataListViewModel = {
+    data: {
+      courses: [
+        {
+          title: 'Data Communications and Networks',
+          name: 'Dejesus Michael',
+          email: 'dejesusmichael@mail.org',
+          type: 'required'
+        },
+        {
+          title: 'Management Information Systems',
+          avatar: 'assets/images/avatars/male-03.jpg',
+          name: 'Mclaughlin Steele',
+          email: 'mclaughlinsteele@mail.me',
+          type: 'required'
+        },
+        {
+          title: 'Introduction to Database Design',
+          avatar: 'assets/images/avatars/female-02.jpg',
+          name: 'Laverne Dodson',
+          email: 'lavernedodson@mail.ca',
+          type: 'elective'
+        },
+        {
+          title: 'Software and Hardware Concepts',
+          avatar: 'assets/images/avatars/female-03.jpg',
+          name: 'Trudy Berg',
+          email: 'trudyberg@mail.us',
+          type: 'required'
+        },
+        {
+          title: 'Structured Systems Analysis & Design',
+          avatar: 'assets/images/avatars/male-07.jpg',
+          name: 'Lamb Underwood',
+          email: 'lambunderwood@mail.me',
+          type: 'required'
+        },
+        {
+          title: 'Database Program Development',
+          avatar: 'assets/images/avatars/male-08.jpg',
+          name: 'Mcleod Wagner',
+          email: 'mcleodwagner@mail.biz',
+          type: 'elective'
+        },
+        {
+          title: 'Network Design and Management',
+          avatar: 'assets/images/avatars/female-07.jpg',
+          name: 'Shannon Kennedy',
+          email: 'shannonkennedy@mail.ca',
+          type: 'optional'
+        }
+      ],
+      types: [
+        {
+          label: 'Required',
+          value: 'required',
+          description: 'This course will is part of the student curriculum.'
+        },
+        {
+          label: 'Elective',
+          value: 'elective',
+          description: 'If choosen by the student, Result of this course will be added to the final grade.'
+        },
+        {
+          label: 'Optional',
+          value: 'optional',
+          description: 'Result of this course will not be added to student final grade.'
+        }
+      ]
+    },
+    pagination: {
+      length: 0,
+      size: 5,
+      page: 0,
+      lastPage: 0,
+      startIndex: 0,
+      endIndex: 0,
+    }
+  }
 
   /**
      * Constructor
