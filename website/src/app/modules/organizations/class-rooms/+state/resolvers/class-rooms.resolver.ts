@@ -5,32 +5,41 @@ import {
   ActivatedRouteSnapshot
 } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { loadCourseCatalogRequest } from 'app/modules/courses/course-management/+state/actions/course-catalog.actions';
-import { filter, finalize, first, Observable, of, tap } from 'rxjs';
+import { filter, finalize, first, mergeMap, Observable, of, switchMap, tap, withLatestFrom } from 'rxjs';
+import { requestClassRoomList } from '../actions/class-rooms.actions';
+import { ClassroomDescriptionViewModel } from '../models/class-rooms.models';
 import { ClassRoomListState } from '../reducers/class-rooms.reducer';
-import { selectClassroomsLoaded } from '../selectors/class-rooms.selectors';
+import { selectClassroomDescriptionList, selectClassroomsLoaded } from '../selectors/class-rooms.selectors';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ClassRoomsResolver implements Resolve<boolean> {
+export class ClassRoomsResolver implements Resolve<ClassroomDescriptionViewModel[]> {
   loading = false;
 
   constructor(private _store: Store<ClassRoomListState>) { }
 
   resolve(
     route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean> {
+    state: RouterStateSnapshot): Observable<ClassroomDescriptionViewModel[]> {
 
     return this._store.pipe(
       select(selectClassroomsLoaded),
       tap((loaded) => {
         if (!this.loading && !loaded) {
           this.loading = true;
-          this._store.dispatch(loadCourseCatalogRequest())
+          const pChange = {
+            pageIndex: 0,
+            pageSize: 5,
+            previousPageIndex: 0
+          }
+          this._store.dispatch(requestClassRoomList({ pChange }))
         }
       }),
       filter((loaded) => loaded),
+      switchMap(() => this._store.pipe(
+        select(selectClassroomDescriptionList)
+      )),
       first(),
       finalize(() => this.loading = false)
     )

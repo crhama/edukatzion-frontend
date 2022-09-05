@@ -6,28 +6,9 @@ export interface ClassroomResultViewModel {
 }
 
 export interface ClassroomViewModel {
-    id: string;
-    name: string;
-    year: string;
-    headOfClass: string;
-    maxCapacity: number;
-    currCapacity: number;
-    highLevel: number;
-    lowLevel: number;
-    waitingList: number;
-}
-
-
-
-export interface xViewModel {
-    classrooms: yClassroomViewModel[];
-    pagination: PaginationViewModel;
-}
-
-export interface yClassroomViewModel {
-    description: ClassroomDescriptionViewModel;
-    students: ClassroomStudentsViewModel;
-    courses: ClassroomCoursesViewModel;
+    descriptionVm: ClassroomDescriptionViewModel;
+    studentVm: ClassroomStudentsViewModel;
+    courseVm: ClassroomCoursesViewModel;
 }
 
 //DESCRIPTION

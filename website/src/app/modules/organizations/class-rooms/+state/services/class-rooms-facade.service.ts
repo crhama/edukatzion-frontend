@@ -14,7 +14,7 @@ export class ClassRoomsFacade {
     get classRoomList$(): Observable<DkzDataTableViewModel> {
         return this._store
             .pipe(
-                select(fromSelectors.selectClassroomList),
+                select(fromSelectors.selectClassroomDescriptionList),
                 tap((vm) => console.log('vm (before): ', vm)),
                 map((list) => convertStudentVmToDkzDtViewModel(list)),
                 tap((vm) => console.log('vm (after): ', vm))

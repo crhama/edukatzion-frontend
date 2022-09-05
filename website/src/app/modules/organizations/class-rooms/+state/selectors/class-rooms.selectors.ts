@@ -19,3 +19,9 @@ export const selectClassroomsLoaded = createSelector(
     getClassroomsFeatureState,
     state => state.classroomsLoaded
 )
+
+export const selectClassroomDescriptionList = createSelector(
+    selectClassroomList,
+    state => state.map(c => c.descriptionVm)
+);
+

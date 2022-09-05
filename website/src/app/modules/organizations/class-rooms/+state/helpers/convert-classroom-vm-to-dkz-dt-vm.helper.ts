@@ -1,8 +1,8 @@
 import { ComponentType, DkzDataTableViewModel, ProcessStatus } from "app/reusable-components/dkz-data-table/+state/models/dkz-data-table.models";
-import { ClassroomViewModel } from "../models/class-rooms.models";
+import { ClassroomDescriptionViewModel } from "../models/class-rooms.models";
 
 export function convertStudentVmToDkzDtViewModel(
-    students: ClassroomViewModel[]
+    students: ClassroomDescriptionViewModel[]
 ): DkzDataTableViewModel {
     const rows = [];
     for (let i = 0; i < students.length; i++) {
