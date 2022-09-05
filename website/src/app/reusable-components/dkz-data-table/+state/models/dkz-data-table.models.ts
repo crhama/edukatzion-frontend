@@ -22,6 +22,7 @@ export interface DkzCellViewModel {
     cssClass?: string; 
     highLevel?: number; 
     lowLevel?: number; 
+    linkValue?: string;
 }
 
 export interface PaginationViewModel
@@ -47,7 +48,8 @@ export enum ComponentType {
     STOCK_LEVEL = 3,
     THUMBNAIL = 4,
     PROCESS_STATUS = 5,
-    DISPLAY_DATETIME = 6
+    DISPLAY_DATETIME = 6,
+    DISPLAY_LINK = 7
 }
 
 export enum ProcessStatus {

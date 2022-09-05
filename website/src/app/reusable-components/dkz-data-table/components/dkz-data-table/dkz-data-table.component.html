@@ -52,6 +52,13 @@
                                     [cssClass]="cell.cssClass">
                                 </app-thumbnail>
 
+                                <app-display-link
+                                    *ngIf="cell.comp === 7" 
+                                    [val]="cell.val"
+                                    [linkValue]="cell.linkValue"
+                                    [cssClass]="cell.cssClass">
+                                </app-display-link>
+
                                 <!-- DISPLAY_TEXT -->
                                 <app-display-text 
                                     *ngIf="cell.comp === 2" 

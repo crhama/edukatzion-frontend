@@ -14,7 +14,8 @@ export function convertStudentVmToDkzDtViewModel(
                 {
                     val: elt.name,
                     cssClass: '',
-                    comp: ComponentType.DISPLAY_TEXT
+                    linkValue: `/organizations/classrooms/${elt.name}/details`,                    
+                    comp: ComponentType.DISPLAY_LINK
                 },
                 {
                     val: elt.year,

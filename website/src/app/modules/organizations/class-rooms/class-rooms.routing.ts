@@ -12,7 +12,7 @@ export const classRoomsRoutes: Route[] = [
         }
     },
     {
-        path: 'details',
+        path: ':id/details',
         component: ClassroomDetailsComponent,
         resolve: {
             classRoomsResolvedData: ClassRoomsResolver

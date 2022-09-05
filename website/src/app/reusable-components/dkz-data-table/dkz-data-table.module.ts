@@ -21,9 +21,11 @@ import { StockLevelComponent } from './components/stock-level/stock-level.compon
 import { ActiveStatusComponent } from './components/active-status/active-status.component';
 import { ProcessStatusComponent } from './components/process-status/process-status.component';
 import { DisplayDateTimeComponent } from './components/display-date-time/display-date-time.component';
+import { DisplayLinkComponent } from './components/display-link/display-link.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-    declarations:[
+  declarations: [
     DkzDataTableComponent,
     ThumbnailComponent,
     DisplayTextComponent,
@@ -31,26 +33,29 @@ import { DisplayDateTimeComponent } from './components/display-date-time/display
     StockLevelComponent,
     ActiveStatusComponent,
     ProcessStatusComponent,
-    DisplayDateTimeComponent
+    DisplayDateTimeComponent,
+    DisplayLinkComponent
   ],
-    imports: [
-        MatButtonModule,
-        MatCheckboxModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatMenuModule,
-        MatPaginatorModule,
-        MatProgressBarModule,
-        MatRippleModule,
-        MatSortModule,
-        MatSelectModule,
-        MatSlideToggleModule,
-        MatTooltipModule,
-        SharedModule
-    ],
-    exports: [
-      DkzDataTableComponent
-    ]
+  imports: [    
+    MatButtonModule,
+    MatCheckboxModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatMenuModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
+    MatRippleModule,
+    MatSortModule,
+    MatSelectModule,
+    MatSlideToggleModule,
+    MatTooltipModule,
+    SharedModule,
+
+    RouterModule
+  ],
+  exports: [
+    DkzDataTableComponent
+  ]
 })
-export class DkzDataTableModule{}
+export class DkzDataTableModule { }

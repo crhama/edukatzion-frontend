@@ -15,9 +15,7 @@ export class ClassRoomsFacade {
         return this._store
             .pipe(
                 select(fromSelectors.selectClassroomDescriptionList),
-                tap((vm) => console.log('vm (before): ', vm)),
-                map((list) => convertStudentVmToDkzDtViewModel(list)),
-                tap((vm) => console.log('vm (after): ', vm))
+                map((list) => convertStudentVmToDkzDtViewModel(list))
             )
     }
 
