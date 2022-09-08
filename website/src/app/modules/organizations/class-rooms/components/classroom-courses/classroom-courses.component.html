@@ -11,13 +11,13 @@
                                     <div class="table-cell pr-1 font-medium">
                                         instructor:
                                     </div>
-                                    <div class="table-cell pr-1">{{course.name }}</div>
+                                    <div class="table-cell pr-1">{{course.instructorName }}</div>
                                 </div>
                                 <div class="table-row">
                                     <div class="table-cell pr-1 font-medium">
                                         Email:
                                     </div>
-                                    <div class="table-cell pr-1">{{course.email}}</div>
+                                    <div class="table-cell pr-1">{{course.instructorEmail }}</div>
                                 </div>
                             </div>
                         </div>
@@ -26,7 +26,7 @@
                 <div class="flex items-center mt-4 sm:mt-0 sm:ml-auto">
                     <div class="order-2 sm:order-1 ml-4 sm:ml-0">
                         <mat-form-field class="fuse-mat-dense fuse-mat-no-subscript w-40">
-                            <mat-select [panelClass]="'w-72 min-w-72 max-w-72 h-auto max-h-none'" [value]="course.type"
+                            <mat-select [panelClass]="'w-72 min-w-72 max-w-72 h-auto max-h-none'" [value]="course.courseType"
                                 disableOptionCentering #typeSelect="matSelect">
                                 <mat-select-trigger class="text-md">
                                     <span>Type:</span>
