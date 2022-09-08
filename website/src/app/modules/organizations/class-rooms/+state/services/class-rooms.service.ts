@@ -18,7 +18,7 @@ export class ClassRoomsService{
         ): Observable<ClassroomResultViewModel> {
             const url = `${this.apiUrl}/Classrooms?pageIndex=${pChange.pageIndex}&pageSize=${pChange.pageSize}`;
             return this._http.get<ClassroomResultViewModel>(url)
-                .pipe(
+                .pipe(                    
                     tap(x => console.log('response: ', x))
                 );
     }

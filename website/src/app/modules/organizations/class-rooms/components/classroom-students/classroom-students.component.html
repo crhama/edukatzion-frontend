@@ -10,12 +10,12 @@
                         <ng-container *ngIf="!member.avatar">
                             <div
                                 class="flex items-center justify-center w-full h-full rounded-full text-lg uppercase bg-gray-200 text-gray-600 dark:bg-gray-700 dark:text-gray-200">
-                                {{member.name.charAt(0)}}
+                                {{member.fullName.charAt(0)}}
                             </div>
                         </ng-container>
                     </div>
                     <div class="ml-4">
-                        <div class="font-medium">{{member.name}}</div>
+                        <div class="font-medium">{{member.fullName}}</div>
                         <div class="text-secondary">{{member.email}}</div>
                     </div>
                 </div>

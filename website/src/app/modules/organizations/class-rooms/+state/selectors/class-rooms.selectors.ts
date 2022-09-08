@@ -25,3 +25,10 @@ export const selectClassroomDescriptionList = createSelector(
     state => state.map(c => c.descriptionVm)
 );
 
+
+export function selectClassRoomById(id: string) {
+    return createSelector(
+        selectClassroomList,
+        state => state.find(e => e.name === id)
+    )
+}

@@ -6,6 +6,8 @@ export interface ClassroomResultViewModel {
 }
 
 export interface ClassroomViewModel {
+    id: string;
+    name: string;
     descriptionVm: ClassroomDescriptionViewModel;
     studentVm: ClassroomStudentsViewModel;
     courseVm: ClassroomCoursesViewModel;
@@ -40,7 +42,7 @@ export interface ClassroomStudentMemberViewModel {
 
 export interface ClassroomStudentStatusViewModel {
     label: string;
-    value: StudentStatusType;
+    value: string;
     description: string;
 }
 
