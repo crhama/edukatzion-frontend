@@ -93,7 +93,7 @@ export const appRoutes: Route[] = [
             },
         ]
     },
-    //Students
+    //courses
     {
         path: 'courses', 
         component  : LayoutComponent,
@@ -105,6 +105,11 @@ export const appRoutes: Route[] = [
                 path: 'management', 
                 loadChildren: () => import('app/modules/courses/course-management/course-management.module')
                     .then(m => m.CourseManagementModule)
+            },
+            {
+                path: 'content', 
+                loadChildren: () => import('app/modules/courses/course-content/course-content.module')
+                    .then(m => m.CourseContentModule)
             },
         ]
     },
