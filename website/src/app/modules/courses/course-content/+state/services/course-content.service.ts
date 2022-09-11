@@ -1,4 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'environments/environment';
 import { Observable, of } from 'rxjs';
 import { CourseContentViewModel } from '../models/course-content.models';
 import { demoCourses, demoCourseSteps } from './data';
@@ -7,18 +9,15 @@ import { demoCourses, demoCourseSteps } from './data';
   providedIn: 'root'
 })
 export class CourseContentService {
+  apiUrl = `${environment.apiUrl}/CourseContent`;
 
-  constructor() { }
+  constructor(private _http: HttpClient) { }
 
 
   loadCourseContent(
     selectedCourseId: string
     ): Observable<CourseContentViewModel> {
-    const obj: CourseContentViewModel = {
-      currentCourse: demoCourses[0],
-      steps: demoCourseSteps
-    }
-
-    return of(obj);
+    const url = `${this.apiUrl}?id=${selectedCourseId}`;
+    return this._http.get<CourseContentViewModel>(url);
   }
 }
