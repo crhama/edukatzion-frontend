@@ -9,20 +9,24 @@ export interface CourseContentState
     extends EntityState<fromModels.CourseStepViewModel> {
     courseContentLoaded: boolean;
     currentCourse: fromModels.CourseDetailsViewModel;
+    selectedUserId: number;
 }
 
-// export function selectUserId(a: CourseCatalogItemViewModel): string {
-//     //In this case this would be optional since primary key is id
-//     return a.id;
-// }
+export function selectUserId(a: fromModels.CourseStepViewModel): number {
+    //In this case this would be optional since primary key is id
+    return a.order;
+}
 
 export const adapter: EntityAdapter<fromModels.CourseStepViewModel>
-    = createEntityAdapter<fromModels.CourseStepViewModel>();
+    = createEntityAdapter<fromModels.CourseStepViewModel>({
+        selectId: selectUserId
+    });
 
 export const initialState: CourseContentState 
     = adapter.getInitialState({
         courseContentLoaded: false,
-        currentCourse: undefined
+        currentCourse: undefined,
+        selectedUserId: null,
     });
 
 export const courseCatalogReducer = createReducer(

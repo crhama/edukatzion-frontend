@@ -10,3 +10,24 @@ export const selectCourseContentLoaded = createSelector(
     getCourseContentFeatureState,
     state => state.courseContentLoaded
 )
+
+export const selectCourseSteps = createSelector(
+    getCourseContentFeatureState,
+    fromReducer.selectAll
+)
+
+export const selectCurrentCourse = createSelector(
+    getCourseContentFeatureState,
+    state => state.currentCourse
+)
+
+export const selectCourseContentDetails = createSelector(
+    selectCurrentCourse,
+    selectCourseSteps,
+    (currentCourse, steps) => { 
+        return {
+            ...currentCourse, 
+            steps: steps
+        } 
+    }
+)

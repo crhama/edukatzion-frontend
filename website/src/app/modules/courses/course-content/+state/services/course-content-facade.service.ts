@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { Observable, of, tap } from 'rxjs';
 import * as fromModels from '../models/course-content.models';
+import { CourseContentState } from '../reducers/course-content.reducer';
+import { selectCourseContentDetails } from '../selectors/course-content.selectors';
 import { demoCategories, demoCourses } from './data';
 
 @Injectable({
@@ -16,5 +19,12 @@ export class CourseContentFacade {
     return of(demoCourses[0]);
   };
 
-  constructor() { }
+  get selectedCourse$()
+    : Observable<fromModels.CourseDetailsViewModel>{
+      return this._store.pipe(
+        select(selectCourseContentDetails)
+      );
+  }
+
+  constructor(private _store: Store<CourseContentState>) { }
 }

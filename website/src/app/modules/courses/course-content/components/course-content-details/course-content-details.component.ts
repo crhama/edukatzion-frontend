@@ -65,9 +65,10 @@ export class CourseContentDetailsComponent implements OnInit {
              });
  
          // Get the course
-         this._facade.course$
+         this._facade.selectedCourse$
              .pipe(takeUntil(this._unsubscribeAll))
              .subscribe((course: fromModels.CourseDetailsViewModel) => {
+                console.log('course: ', course)
  
                  // Get the course
                  this.course = course;
