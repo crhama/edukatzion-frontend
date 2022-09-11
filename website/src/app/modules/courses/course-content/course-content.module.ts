@@ -16,7 +16,10 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FuseFindByKeyPipeModule } from '@fuse/pipes/find-by-key';
 import { SharedModule } from 'app/shared/shared.module';
 import { MatTabsModule } from '@angular/material/tabs';
-
+import { StoreModule } from '@ngrx/store';
+import * as fromReducer from './+state/reducers/course-content.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CourseContentEffects } from "./+state/effects/course-content.effects";
 
 
 @NgModule({
@@ -28,17 +31,22 @@ import { MatTabsModule } from '@angular/material/tabs';
     CommonModule,
     RouterModule.forChild(CourseContentRouting),
     MatButtonModule,
-        MatFormFieldModule,
-        MatIconModule,
-        MatInputModule,
-        MatProgressBarModule,
-        MatSelectModule,
-        MatSidenavModule,
-        MatSlideToggleModule,
-        MatTooltipModule,
-        FuseFindByKeyPipeModule,
-        SharedModule,
-        MatTabsModule
+    MatFormFieldModule,
+    MatIconModule,
+    MatInputModule,
+    MatProgressBarModule,
+    MatSelectModule,
+    MatSidenavModule,
+    MatSlideToggleModule,
+    MatTooltipModule,
+    FuseFindByKeyPipeModule,
+    SharedModule,
+    MatTabsModule,
+
+    StoreModule.forFeature(
+      fromReducer.COURSE_CONTENT_KEY,
+      fromReducer.courseCatalogReducer),
+    EffectsModule.forFeature([CourseContentEffects])
   ]
 })
 export class CourseContentModule { }

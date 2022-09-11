@@ -10,7 +10,6 @@ import { ActivatedRoute } from '@angular/router';
 import { FuseMediaWatcherService } from '@fuse/services/media-watcher';
 import { Subject, takeUntil } from 'rxjs';
 import * as fromModels from '../../+state/models/course-content.models';
-import { AcademyServiceService } from '../../+state/services/academy-service.service';
 import { CourseContentFacade } from '../../+state/services/course-content-facade.service';
 
 @Component({

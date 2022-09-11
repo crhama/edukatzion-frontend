@@ -23,6 +23,12 @@ export interface Course
     };
 }
 
+/////////
+export interface CourseContentViewModel {
+    currentCourse: CourseDetailsViewModel;
+    steps: CourseStepViewModel[];
+}
+
 export interface CategoryViewModel
 {
     id?: string;

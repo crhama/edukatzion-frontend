@@ -1,4 +1,4 @@
-import { Course } from "../models/course-content.models";
+import { Course, CourseDetailsViewModel, CourseStepViewModel } from "../models/course-content.models";
 
 /* eslint-disable */
 export const demoCategories = [
@@ -23,7 +23,7 @@ export const demoCategories = [
         slug : 'android'
     }
 ];
-export const demoCourses: Course[] = [
+export const demoCourses: CourseDetailsViewModel[] = [
     {
         id         : '694e4e5f-f25f-470b-bd0e-26b1d4f64028',
         title      : 'Basics of Angular',
@@ -651,7 +651,7 @@ export const demoCourseContent = `
     Assumenda, eum, minima! Autem consectetur fugiat iste sit! Nobis omnis quo repellendus.
 </p>
 `;
-export const demoCourseSteps = [
+export const demoCourseSteps: CourseStepViewModel[] = [
     {
         order   : 0,
         title   : 'Introduction',

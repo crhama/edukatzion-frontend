@@ -1,12 +1,14 @@
 import { createEntityAdapter, EntityAdapter, EntityState } from "@ngrx/entity";
-import { createReducer } from "@ngrx/store";
+import { createReducer, on } from "@ngrx/store";
 import * as fromModels from "../models/course-content.models";
+import * as fromActions from "../actions/course-content.actions";
 
-export const COURSE_CATALOG_KEY = 'courseCatalog';
+export const COURSE_CONTENT_KEY = 'courseContent';
 
-export interface CourseStepState 
+export interface CourseContentState 
     extends EntityState<fromModels.CourseStepViewModel> {
-    currentCourse: fromModels.CourseDetailsViewModel
+    courseContentLoaded: boolean;
+    currentCourse: fromModels.CourseDetailsViewModel;
 }
 
 // export function selectUserId(a: CourseCatalogItemViewModel): string {
@@ -17,13 +19,24 @@ export interface CourseStepState
 export const adapter: EntityAdapter<fromModels.CourseStepViewModel>
     = createEntityAdapter<fromModels.CourseStepViewModel>();
 
-export const initialState: CourseStepState 
+export const initialState: CourseContentState 
     = adapter.getInitialState({
+        courseContentLoaded: false,
         currentCourse: undefined
     });
 
 export const courseCatalogReducer = createReducer(
-    initialState
+    initialState,
+    on(fromActions.loadCourseContentSuccess, (state, {selectedCourse}) => {
+        return adapter.setAll(
+            selectedCourse.steps,
+            {
+                ...state,
+                currentCourse: selectedCourse.currentCourse,
+                courseContentLoaded: true
+            }
+        )
+    })
 );
 
 // get the selectors

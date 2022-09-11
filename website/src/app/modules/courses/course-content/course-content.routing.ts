@@ -1,4 +1,5 @@
 import { Route } from "@angular/router";
+import { CourseContentDetailsResolver } from "./+state/resolvers/course-content-details.resolver";
 import { 
     CourseContentDetailsComponent 
 } from "./components/course-content-details/course-content-details.component";
@@ -18,7 +19,10 @@ export const CourseContentRouting: Route[] = [
             },
             {
                 path: 'details',
-                component: CourseContentDetailsComponent
+                component: CourseContentDetailsComponent,
+                resolve: {
+                    CourseContentDetails: CourseContentDetailsResolver
+                }
             }
         ]
     }
