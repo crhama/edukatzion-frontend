@@ -25,6 +25,8 @@ import { ClassroomDescriptionComponent } from './components/classroom-descriptio
 import { DkzDrawerDetailsModule } from 'app/reusable-components/dkz-drawer-details/dkz-drawer-details.module';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DkzDataListModule } from 'app/reusable-components/dkz-data-list/dkz-data-list.module';
+import { ClassAggregatedResultsComponent } from './components/class-aggregated-results/class-aggregated-results.component';
+import { DkzReadTableModule } from 'app/reusable-components/dkz-read-table/dkz-read-table.module';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { DkzDataListModule } from 'app/reusable-components/dkz-data-list/dkz-dat
     ClassroomDetailsComponent,
     ClassroomStudentsComponent,
     ClassroomCoursesComponent,
-    ClassroomDescriptionComponent
+    ClassroomDescriptionComponent,
+    ClassAggregatedResultsComponent
   ],
   imports: [
     CommonModule,
@@ -55,6 +58,7 @@ import { DkzDataListModule } from 'app/reusable-components/dkz-data-list/dkz-dat
     DkzDataTableModule,
     DkzDrawerDetailsModule,
     DkzDataListModule,
+    DkzReadTableModule,
 
     StoreModule.forFeature(
       fromReducer.CLASSROOM_LIST_KEY,
