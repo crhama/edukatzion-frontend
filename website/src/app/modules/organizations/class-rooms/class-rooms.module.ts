@@ -10,6 +10,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { FuseAlertModule } from '@fuse/components/alert';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { SharedModule } from 'app/shared/shared.module';
 import { classRoomsRoutes } from './class-rooms.routing';
 import { ClassRoomsComponent } from './components/class-rooms/class-rooms.component';
@@ -26,7 +27,15 @@ import { DkzDrawerDetailsModule } from 'app/reusable-components/dkz-drawer-detai
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DkzDataListModule } from 'app/reusable-components/dkz-data-list/dkz-data-list.module';
 import { ClassAggregatedResultsComponent } from './components/class-aggregated-results/class-aggregated-results.component';
-import { DkzReadTableModule } from 'app/reusable-components/dkz-read-table/dkz-read-table.module';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRippleModule } from '@angular/material/core';
+import { MatSortModule } from '@angular/material/sort';
+import { MatTableModule } from '@angular/material/table';
+import { MatTabsModule } from '@angular/material/tabs';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { TranslocoModule } from '@ngneat/transloco';
 
 
 @NgModule({
@@ -52,13 +61,27 @@ import { DkzReadTableModule } from 'app/reusable-components/dkz-read-table/dkz-r
     MatSlideToggleModule,
     FuseAlertModule,
     MatPaginatorModule,
+
+    // MatButtonModule,
+    MatButtonToggleModule,
+    MatDividerModule,
+    // MatIconModule,
+    MatMenuModule,
+    MatProgressBarModule,
+    MatRippleModule,
+    // MatSidenavModule,
+    MatSortModule,
+    MatTableModule,
+    MatTabsModule,
+    NgApexchartsModule,
+    TranslocoModule,
+
     SharedModule,
 
     
     DkzDataTableModule,
     DkzDrawerDetailsModule,
     DkzDataListModule,
-    DkzReadTableModule,
 
     StoreModule.forFeature(
       fromReducer.CLASSROOM_LIST_KEY,
