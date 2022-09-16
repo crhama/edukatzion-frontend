@@ -1,12 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DkzReadOnlyTableViewModel } from 'app/reusable-components/dkz-read-only-table/models/dkz-read-only-table.models';
-
-export enum DisplayType {
-  DKZ_TEXT = 1,
-  DKZ_PCT,
-  DKZ_CURR_US,
-  DKZ_DATE
-}
+import * as fromModels from 'app/reusable-components/dkz-read-only-table/models/dkz-read-only-table.models';
 
 @Component({
   selector: 'app-class-aggregated-results',
@@ -14,30 +7,116 @@ export enum DisplayType {
   </dkz-read-only-table>`
 })
 export class ClassAggregatedResultsComponent implements OnInit {
-  data: DkzReadOnlyTableViewModel = {
+  data: fromModels.DkzReadOnlyTableViewModel = {
+    title: 'Budget Details',
     columnData: [
       {
         column: 'student',
         label: 'Student',
-        type: DisplayType.DKZ_TEXT
+        type: fromModels.DisplayType.DKZ_TEXT
       },
       {
         column: 'quiz1',
         label: 'quiz 1',
-        type: DisplayType.DKZ_CURR_US
+        type: fromModels.DisplayType.DKZ_CURR_US,
+        url: 'quiz1'
       },
       {
         column: 'quiz2',
         label: 'quiz 2',
-        type: DisplayType.DKZ_PCT
+        type: fromModels.DisplayType.DKZ_PCT
       },
       {
         column: 'exam1',
         label: 'exam 1',
-        type: DisplayType.DKZ_PCT
+        type: fromModels.DisplayType.DKZ_PCT
       }
     ],
     rows: [
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
+      {
+        id: 1,
+        student: 'Concept',
+        quiz1: 10,
+        quiz2: 10,
+        exam1: 10
+      },
       {
         id: 1,
         student: 'Concept',

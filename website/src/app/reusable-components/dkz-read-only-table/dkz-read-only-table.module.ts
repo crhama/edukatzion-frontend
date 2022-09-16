@@ -12,6 +12,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { TranslocoModule } from '@ngneat/transloco';
 import { SharedModule } from 'app/shared/shared.module';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 
@@ -35,6 +36,8 @@ import { SharedModule } from 'app/shared/shared.module';
     MatTabsModule,
     NgApexchartsModule,
     TranslocoModule,
+
+    MatPaginatorModule,
 
     SharedModule,
   ],

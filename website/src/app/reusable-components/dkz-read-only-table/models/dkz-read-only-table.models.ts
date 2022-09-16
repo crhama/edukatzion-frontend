@@ -6,6 +6,7 @@ export enum DisplayType {
   }
 
 export interface DkzReadOnlyTableViewModel{
+  title: string;
   columnData: DkzReadOnlyColumnViewModel[];
   rows: any[]
 }
@@ -14,4 +15,5 @@ export interface DkzReadOnlyColumnViewModel{
   column: string;
   label: string;
   type: DisplayType;
+  url?: string;
 }
